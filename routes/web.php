@@ -20,4 +20,3 @@ Auth::routes(['verify' => true]);
 
 //middleware verified halaman yang dimana user harus verifikasi gmail
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> Briyan
