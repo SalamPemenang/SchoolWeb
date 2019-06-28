@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Verify true untuk memastikan verifikasi benar
+Auth::routes(['verify' => true]);
 
+//middleware verified halaman yang dimana user harus verifikasi gmail
 Route::get('/home', 'HomeController@index')->name('home');
