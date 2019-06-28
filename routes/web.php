@@ -15,7 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 // Tahun Ajaran Di Halaman Admin
 Route::get('/tahun', function () {
     return view('admin.tahunajaran.index');
 });
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> Briyan
