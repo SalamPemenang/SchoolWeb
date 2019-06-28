@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Tahun Ajaran Di Halaman Admin
+Route::get('/tahun', function () {
+    return view('admin.tahunajaran.index');
+});
