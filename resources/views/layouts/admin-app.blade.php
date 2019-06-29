@@ -620,5 +620,7 @@
    <div class="control-sidebar-bg"></div>
  </div>
  @include('admin.part.assets-foot')
+
+ @stack('scripts')
 </body>
 </html>
