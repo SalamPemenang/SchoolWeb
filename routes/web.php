@@ -34,4 +34,14 @@ Route::get('/tahun-ajaran/{id}/edit', 'Admin\TahunAjaranController@edit')->name(
 // Hapus Tahun Ajaran
 Route::delete('/tahun-ajaran/{id}/hapus', 'Admin\TahunAjaranController@destroy')->name('tahun.delete');
 
+//Halaman Prestaasi
+Route::prefix('prestasi')->group( function() {
+	Route::get('/', 'Admin\Prestasicontroller@index')->name('prestasi');
+	Route::get('/tambah', 'Admin\Prestasicontroller@create')->name('prestasi.add');
+	Route::post('/post', 'Admin\Prestasicontroller@store')->name('add.post');
+	Route::get('/edit/{id}', 'Admin\Prestasicontroller@edit')->name('prestasi.edit');
+	Route::post('/post/{id}', 'Admin\Prestasicontroller@update')->name('edit.post');
+	Route::delete('delete/{id}', 'Admin\PrestasiController@destroy')->name('prestasi.delete');
+});
+
 
