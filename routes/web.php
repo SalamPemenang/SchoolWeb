@@ -46,6 +46,7 @@ Route::post('/kelas/post', 'Admin\KelasController@store')->name('kelas.post');
 Route::get('/kelas/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit');
 // Hapus Kelas
 Route::delete('/kelas/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete');
+
 //Halaman Prestaasi
 Route::prefix('prestasi')->group( function() {
 	Route::get('/', 'Admin\Prestasicontroller@index')->name('prestasi');
