@@ -10,8 +10,6 @@ Kelas
 		<tr>
 			<th>id</th>
 			<th>kelas</th>
-			<th>created_at</th>
-			<th>updated_at</th>
 		</tr>
 	</table>
 @stop
@@ -27,8 +25,6 @@ Kelas
     columns: [
     {data: 'id', name: 'id', width: '15px'},
     {data: 'kelas', name: 'kelas', width: '20px'},
-    {data: 'created_at', name: 'created_at', width: '20px'},
-    {data: 'updated_at', name: 'updated_at', width: '20px'},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]
 		});

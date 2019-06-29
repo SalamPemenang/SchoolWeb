@@ -21,31 +21,53 @@ Auth::routes(['verify' => true]);
 //middleware verified halaman yang dimana user harus verifikasi gmail
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Halaman Admin Tahun Ajaran 
-Route::get('/tahun-ajaran', 'Admin\TahunAjaranController@index')->name('tahunajaran');
-// Datatable Tahun Ajaran
-Route::get('/tahun-ajaran/data', 'Admin\TahunAjaranController@tahunDatatables')->name('tahun.data');
-// Tambah Data Tahun Ajaran
-Route::get('/tahun-ajaran/tambah', 'Admin\TahunAjaranController@create')->name('tahun.tambah');
-// Post Tambah & Ubah Tahun Ajaran
-Route::post('/tahun-ajaran/post', 'Admin\TahunAjaranController@store')->name('tahun.post');
-// Edit Tahun Ajaran
-Route::get('/tahun-ajaran/{id}/edit', 'Admin\TahunAjaranController@edit')->name('tahun.edit');
-// Hapus Tahun Ajaran
-Route::delete('/tahun-ajaran/{id}/hapus', 'Admin\TahunAjaranController@destroy')->name('tahun.delete');
+//Halaman Admin : Tahun Ajaran 
+Route::prefix('tahun-ajaran')->group(function(){
+	Route::get('/', 'Admin\TahunAjaranController@index')->name('tahunajaran');
+	// Datatable Tahun Ajaran
+	Route::get('/data', 'Admin\TahunAjaranController@tahunDatatables')->name('tahun.data');
+	// Tambah Data Tahun Ajaran
+	Route::get('/tambah', 'Admin\TahunAjaranController@create')->name('tahun.tambah');
+	// Post Tambah & Ubah Tahun Ajaran
+	Route::post('/post', 'Admin\TahunAjaranController@store')->name('tahun.post');
+	// Edit Tahun Ajaran
+	Route::get('/{id}/edit', 'Admin\TahunAjaranController@edit')->name('tahun.edit');
+	// Hapus Tahun Ajaran
+	Route::delete('/{id}/hapus', 'Admin\TahunAjaranController@destroy')->name('tahun.delete');
+});
 
-// Halaman Admin Kelas
-Route::get('/kelas', 'Admin\KelasController@index')->name('kelas');
-// Datatable Kelas
-Route::get('/kelas/data', 'Admin\KelasController@kelasDatatables')->name('kelas.data');
-// Tambah Kelas
-Route::get('/kelas/tambah', 'Admin\KelasController@create')->name('kelas.tambah');
-// Post Tambah & Ubah Kelas
-Route::post('/kelas/post', 'Admin\KelasController@store')->name('kelas.post');
-// Edit Kelas
-Route::get('/kelas/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit');
-// Hapus Kelas
-Route::delete('/kelas/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete');
+
+// Halaman Admin : Kelas
+Route::prefix('kelas')->group(function(){
+	Route::get('/', 'Admin\KelasController@index')->name('kelas');
+	// Datatable Kelas
+	Route::get('/data', 'Admin\KelasController@kelasDatatables')->name('kelas.data');
+	// Tambah Kelas
+	Route::get('/tambah', 'Admin\KelasController@create')->name('kelas.tambah');
+	// Post Tambah & Ubah Kelas
+	Route::post('/post', 'Admin\KelasController@store')->name('kelas.post');
+	// Edit Kelas
+	Route::get('/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit');
+	// Hapus Kelas
+	Route::delete('/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete');
+});
+
+
+// Halaman Admin : Guru
+Route::prefix('guru')->group(function(){
+	Route::get('/', 'Admin\GuruController@index')->name('guru');
+	// Datatable
+	Route::get('/data', 'Admin\GuruController@guruDatatables')->name('guru.data');
+	// Tambah Guru
+	Route::get('/tambah', 'Admin\GuruController@create')->name('guru.tambah');
+	// Post Tambah & Ubah Guru
+	Route::post('/post', 'Admin\GuruController@store')->name('guru.post');
+	// Edit Guru
+	Route::get('/{id}/edit', 'Admin\GuruController@edit')->name('guru.edit');
+	// Hapus Guru
+	Route::delete('/{id}/hapus', 'Admin\GuruController@destroy')->name('guru.delete');
+});
+
 
 //Halaman Prestaasi
 Route::prefix('prestasi')->group( function() {
