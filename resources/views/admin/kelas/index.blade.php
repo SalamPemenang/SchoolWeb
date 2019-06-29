@@ -7,10 +7,14 @@ Kelas
 @section('content')
 	<a href="{{route('kelas.tambah')}}">Tambah Kelas</a><br><br>
 	<table id="kelas">
-		<tr>
-			<th>id</th>
-			<th>kelas</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>kelas</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		
 	</table>
 @stop
 @push('scripts')
