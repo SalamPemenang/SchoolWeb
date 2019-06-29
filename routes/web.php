@@ -34,4 +34,17 @@ Route::get('/tahun-ajaran/{id}/edit', 'Admin\TahunAjaranController@edit')->name(
 // Hapus Tahun Ajaran
 Route::delete('/tahun-ajaran/{id}/hapus', 'Admin\TahunAjaranController@destroy')->name('tahun.delete');
 
+// Halaman Admin Kelas
+Route::get('/kelas', 'Admin\KelasController@index')->name('kelas');
+// Datatable Kelas
+Route::get('/kelas/data', 'Admin\KelasController@kelasDatatables')->name('kelas.data');
+// Tambah Kelas
+Route::get('/kelas/tambah', 'Admin\KelasController@create')->name('kelas.tambah');
+// Post Tambah & Ubah Kelas
+Route::post('/kelas/post', 'Admin\KelasController@store')->name('kelas.post');
+// Edit Kelas
+Route::get('/kelas/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit');
+// Hapus Kelas
+Route::delete('/kelas/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete');
+
 
