@@ -5,12 +5,13 @@ Guru
 @stop
 
 @section('content')
-	<a href="{{route('guru.tambah')}}">Tambah Guru</a><br><br>
+	<a href="{{route('guru.tambah')}}" class="btn btn-primary">Tambah Guru</a><br><br>
 	<table id="guru">
 		<thead>
 			<tr role="row">
 				<th>no</th>
 				<th>nuptk</th>
+				<th>nip</th>
 				<th>nama</th>
 				<th>jenis kelamin</th>
 				<th>tempat lahir</th>
@@ -31,13 +32,14 @@ Guru
     serverSide: true,
     ajax: '{!! route('guru.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '15px', orderable: true},
+    {data: 'id', name: 'id', width: '10px', orderable: true},
     {data: 'nuptk', name: 'nuptk', width: '20px', orderable: true},
-    {data: 'nama', name: 'nama', width: '20px', orderable: true},
-    {data: 'jk', name: 'jk', width: '20px', orderable: true},
-    {data: 'tmpt_lahir', name: 'tmpt_lahir', orderable: true},
-    {data: 'tgl_lahir', name: 'tgl_lahir', orderable: true},
-    {data: 'alamat', name: 'alamat', orderable: true,},
+    {data: 'nip', name: 'nip', width: '20px', orderable: true},
+    {data: 'nama', name: 'nama', width: '50px', orderable: true},
+    {data: 'jk', name: 'jk', width: '10px', orderable: true},
+    {data: 'tmpt_lahir', name: 'tmpt_lahir', width: '20px', orderable: true},
+    {data: 'tgl_lahir', name: 'tgl_lahir', width: '20px', orderable: true},
+    {data: 'alamat', name: 'alamat', width: '100px', orderable: true,},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]
 		});
