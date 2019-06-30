@@ -22,7 +22,10 @@ class KelasController extends Controller
     public function kelasDatatables()
     {
         $kelas = Kelas::all();
-        return Datatables::of($kelas)->addColumn('action', 'admin.kelas.action')->make(true);
+        return Datatables::of($kelas)
+                            ->addColumn('action', 'admin.kelas.action')
+                            ->addIndexColumn()
+                            ->make(true);
     }
 
     /**
