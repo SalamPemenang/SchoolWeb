@@ -19,7 +19,7 @@ class CreateSiswaTable extends Migration
             $table->string('nis',15)->nullable();
             $table->string('nama',50)->nullable();
             $table->string('jk',1)->nullable();
-            $table->dateTimeTz('tgl_lahir',6)->nullable();
+            $table->date('tgl_lahir',6)->nullable();
             $table->string('tmpt_lahir',50)->nullable();
             $table->string('foto',200)->default('default.jpg');
             $table->unsignedInteger('id_tahun_ajaran')->nullable();
