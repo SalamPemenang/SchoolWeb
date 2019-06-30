@@ -2,7 +2,7 @@
 
 @section('title')
 Ubah Data
-@endsection
+@stop
 
 @section('content')
 <div class="row">
@@ -53,4 +53,4 @@ Ubah Data
 		</form>
 	</div>
 </div>
-@endsection
+@stop
