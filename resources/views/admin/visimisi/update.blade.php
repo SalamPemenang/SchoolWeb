@@ -2,11 +2,11 @@
 
 @section('title')
 Ubah Data Visi dan Misi
-@endsection
+@stop
 
 @section('page-name')
 Ubah Data Visi dan Misi
-@endsection
+@stop
 
 @section('content')
 		<div class="card col-md-5">
@@ -25,4 +25,4 @@ Ubah Data Visi dan Misi
 				<button type="submit" class="btn btn-info col-md-12 col-md-offset-3">Ubah Data</button>
 			</form>
 		</div>
-@endsection
+@stop
