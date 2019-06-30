@@ -11,7 +11,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('../../dist/js/demo.js')}}"></script>
 <!-- Datatable -->
-<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('../../js/jquery.dataTables.min.js')}}"></script>
+
 
 <script>
   $(document).ready(function () {
