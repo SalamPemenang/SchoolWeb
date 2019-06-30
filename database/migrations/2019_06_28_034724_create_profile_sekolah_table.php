@@ -22,7 +22,7 @@ class CreateProfileSekolahTable extends Migration
             $table->string('website',40)->nullable();
             $table->string('email',40)->nullable();
             $table->string('no_sk_pendirian_sekolah',50)->nullable();
-            $table->dateTime('tgl_pendirian',6)->nullable();
+            $table->date('tgl_pendirian',6)->nullable();
             $table->timestamps();
         });
     }
