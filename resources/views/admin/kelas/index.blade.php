@@ -27,7 +27,7 @@ Kelas
     serverSide: true,
     ajax: '{!! route('kelas.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '10px'},
+    {data: 'DT_RowIndex', name: 'DT_RowIndex', width: '10'},
     {data: 'kelas', name: 'kelas', width: '10px'},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]
