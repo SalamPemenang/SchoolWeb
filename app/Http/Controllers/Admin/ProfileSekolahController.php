@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Guru;
-use DataTables;
+use App\ProfileSekolah;
 
-class GuruController extends Controller
+class ProfileSekolahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('admin.guru.index');
-    }
-
-    public function guruDatatables()
-    {
-        $guru = Guru::all();
-        return Datatables::of($guru)->addColumn('action', 'admin.guru.action')->make(true);
+      $profilesekolah = ProfileSekolah::All();
+      return view('admin.profilesekolah.index', ['profilesekolah' => $profilesekolah]); 
     }
 
     /**
@@ -32,7 +26,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.guru.add');
+        //
     }
 
     /**
@@ -43,24 +37,7 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->get('id');
-        if ($id) {
-            $guru = Guru::findOrFail($id);
-        }else{
-            $guru = new Guru;
-        }
-
-        $guru->nuptk = $request->nuptk;
-        $guru->nip = $request->nip;
-        $guru->nama = $request->nama;
-        $guru->jk = $request->jk;
-        $guru->tgl_lahir = $request->tgl_lahir;
-        $guru->tmpt_lahir = $request->tmpt_lahir;
-        $guru->alamat = $request->alamat;
-        $guru->save();
-
-        return redirect()->route('guru');
-
+        //
     }
 
     /**
@@ -82,8 +59,8 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::findOrFail($id);
-        return view('admin.guru.edit', compact('guru'));
+        $profilesekolah = ProfileSekolah::find($id);
+        return view('admin.profilesekolah.update', ['profilesekolah' => $profilesekolah]); 
     }
 
     /**
@@ -95,7 +72,17 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $profilesekolah = ProfileSekolah::find($id);
+        $profilesekolah->nama = $request->nama;
+        $profilesekolah->npsn = $request->npsn;
+        $profilesekolah->kode_un = $request->kode_un;
+        $profilesekolah->nis = $request->nis;
+        $profilesekolah->website = $request->website;
+        $profilesekolah->email = $request->email;
+        $profilesekolah->no_sk_pendirian_sekolah = $request->no_sk_pendirian_sekolah;
+        $profilesekolah->tgl_pendirian = $request->tgl_pendirian;
+        $profilesekolah->save();
+        return redirect('profilesekolah');
     }
 
     /**
@@ -106,7 +93,6 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = Guru::where('id', $id)->delete();
-        return redirect()->route('guru');
+        //
     }
 }

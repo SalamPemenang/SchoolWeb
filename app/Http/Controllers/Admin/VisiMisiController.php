@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Guru;
-use DataTables;
+use App\VisiMisi;
 
-class GuruController extends Controller
+class VisiMisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +15,15 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('admin.guru.index');
+        $visimisi = VisiMisi::All();
+        return view('admin.visimisi.index', ['visimisi'=>$visimisi]);
     }
 
-    public function guruDatatables()
+    public function manage() 
     {
-        $guru = Guru::all();
-        return Datatables::of($guru)->addColumn('action', 'admin.guru.action')->make(true);
+        $visimisi = VisiMisi::All();
+        return view('admin.visimisi.manage', ['visimisi' => $visimisi]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +31,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.guru.add');
+        return view('admin.visimisi.create');
     }
 
     /**
@@ -43,24 +42,13 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->get('id');
-        if ($id) {
-            $guru = Guru::findOrFail($id);
-        }else{
-            $guru = new Guru;
-        }
 
-        $guru->nuptk = $request->nuptk;
-        $guru->nip = $request->nip;
-        $guru->nama = $request->nama;
-        $guru->jk = $request->jk;
-        $guru->tgl_lahir = $request->tgl_lahir;
-        $guru->tmpt_lahir = $request->tmpt_lahir;
-        $guru->alamat = $request->alamat;
-        $guru->save();
+        $visimisi = new VisiMisi;
+        $visimisi->visi = $request->visi;
+        $visimisi->misi = $request->misi;
+        $visimisi->save();
 
-        return redirect()->route('guru');
-
+        return redirect('visimisi');
     }
 
     /**
@@ -82,8 +70,8 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::findOrFail($id);
-        return view('admin.guru.edit', compact('guru'));
+        $visimisi = VisiMisi::find($id);
+        return view('admin.visimisi.update', ['visimisi' => $visimisi]);
     }
 
     /**
@@ -95,7 +83,11 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $visimisi = VisiMisi::find($id);
+        $visimisi->visi = $request->visi;
+        $visimisi->misi = $request->misi;
+        $visimisi->save();
+        return redirect('visimisi');
     }
 
     /**
@@ -106,7 +98,9 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = Guru::where('id', $id)->delete();
-        return redirect()->route('guru');
+        $visimisi = VisiMisi::find($id);
+        $visimisi->delete();
+
+        return redirect('visimisi');
     }
 }

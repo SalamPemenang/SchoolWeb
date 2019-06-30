@@ -5,12 +5,16 @@ Kelas
 @stop
 
 @section('content')
-	<a href="{{route('kelas.tambah')}}">Tambah Kelas</a><br><br>
+	<a href="{{route('kelas.tambah')}}" class="btn btn-primary">Tambah Kelas</a><br><br>
 	<table id="kelas">
-		<tr>
-			<th>id</th>
-			<th>kelas</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>kelas</th>
+				<th>action</th>
+			</tr>
+		</thead>
+		
 	</table>
 @stop
 @push('scripts')
@@ -23,8 +27,8 @@ Kelas
     serverSide: true,
     ajax: '{!! route('kelas.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '15px'},
-    {data: 'kelas', name: 'kelas', width: '20px'},
+    {data: 'id', name: 'id', width: '10px'},
+    {data: 'kelas', name: 'kelas', width: '10px'},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]
 		});
