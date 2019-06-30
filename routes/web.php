@@ -72,32 +72,37 @@ Route::prefix('guru')->group(function(){
 //Halaman Prestaasi
 Route::prefix('prestasi')->group( function() {
 	Route::get('/', 'Admin\Prestasicontroller@index')->name('prestasi');
+	// DataTable
+	Route::get('/data', 'Admin\Prestasicontroller@prestasiDatatable')->name('prestasi.data');
+	// Tambah Data
 	Route::get('/tambah', 'Admin\Prestasicontroller@create')->name('prestasi.add');
 	Route::post('/post', 'Admin\Prestasicontroller@store')->name('add.post');
+	// Ubah Data
 	Route::get('/edit/{id}', 'Admin\Prestasicontroller@edit')->name('prestasi.edit');
 	Route::post('/post/{id}', 'Admin\Prestasicontroller@update')->name('edit.post');
+	// Hapus Data
 	Route::delete('delete/{id}', 'Admin\PrestasiController@destroy')->name('prestasi.delete');
 });
 
 
 //Profile Sekolah di halaman admin
 Route::prefix('profilesekolah')->group(function() {
-Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah');
-//ubah Profile 
-Route::get('/{id}/edit', 'Admin\ProfileSekolahController@edit')->name('profilesekolah.edit');
-Route::put('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post');
+	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah');
+	//ubah Profile 
+	Route::get('/{id}/edit', 'Admin\ProfileSekolahController@edit')->name('profilesekolah.edit');
+	Route::put('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post');
 });
 
 //Visi dan Misi di halaman Admin
 Route::prefix('visimisi')->group(function() { 
-Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi');
-Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage');
-//tambah data visi dan misi
-Route::get('/tambah', 'Admin\VisiMisiController@create')->name('visimisi.tambah');
-Route::post('/post', 'Admin\VisiMisiController@store')->name('visimisi.add');
-//ubah data visi dan misi
-Route::get('/{id}/edit', 'Admin\VisiMisiController@edit')->name('visimisi.edit');
-Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
-//hapus data visi dan misi
-Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus');
+	Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi');
+	Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage');
+	//tambah data visi dan misi
+	Route::get('/tambah', 'Admin\VisiMisiController@create')->name('visimisi.tambah');
+	Route::post('/post', 'Admin\VisiMisiController@store')->name('visimisi.add');
+	//ubah data visi dan misi
+	Route::get('/{id}/edit', 'Admin\VisiMisiController@edit')->name('visimisi.edit');
+	Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
+	//hapus data visi dan misi
+	Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus');
 });

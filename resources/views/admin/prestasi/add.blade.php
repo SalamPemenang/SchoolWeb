@@ -14,22 +14,22 @@ Tambah Prestasi
 
 				<div class="form-group">
 					<label for="np">Nama Prestasi :</label>
-					<input type="text" name="nama" class="form-control" id="np">
+					<input type="text" name="nama" class="form-control" id="np" required="" maxlength="50">
 				</div>
 
 				<div class="form-group">
 					<label for="jk">Juara Ke- :</label>
-					<input type="text" name="juara_ke" class="form-control" id="jk">
+					<input type="text" name="juara_ke" class="form-control" id="jk" required="" maxlength="30">
 				</div>
 
 				<div class="form-group">
 					<label for="tkt">Tingkat :</label>
-					<input type="text" name="tingkat" class="form-control" id="tkt">
+					<input type="text" name="tingkat" class="form-control" id="tkt" required="" maxlength="30">
 				</div>
 
 				<div class="form-group">
 					<label for="pst">Peserta :</label>
-					<input type="text" name="peserta" class="form-control" id="pst">
+					<input type="text" name="peserta" class="form-control" id="pst" required="" maxlength="10">
 				</div>
 
 				<div class="form-group">
