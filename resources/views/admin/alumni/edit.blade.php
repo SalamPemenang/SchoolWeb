@@ -7,7 +7,7 @@ Edit Alumni
 @section('content')
 <form action="{{route('alumni.post')}}" method="post" enctype="multipart/form-data">
 	@csrf
-
+	<input type="hidden" name="id" value="{{$alumni->id}}">
 	<div class="form-group">
 		<label for="nama">Nama *</label>
 		<input type="text" name="nama" id="nama" class="form-control" autocomplete="off" required="" maxlength="50" value="{{$alumni->nama}}">
@@ -26,8 +26,7 @@ Edit Alumni
 
 	<div class="form-group">
 		<label for="foto">Foto *</label>
-		<input type="file" name="foto" id="foto" required="">
-		<label>{{$alumni->foto}}</label>
+		<input type="file" name="foto" id="foto" required="">{{$alumni->foto}}	
 	</div>	
 
 	<div class="form-group">

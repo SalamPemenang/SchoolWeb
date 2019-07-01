@@ -9,7 +9,7 @@ Alumni
 	<table id="alumni">
 		<thead>
 			<tr role="row">
-				<th>#</th>
+				<th>no</th>
 				<th>nama</th>
 				<th>jenis kelamin</th>
 				<th>tahun lulus</th>

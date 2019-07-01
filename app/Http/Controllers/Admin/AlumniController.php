@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Alumni;
+use DataTables;
 use Image;
 
 class AlumniController extends Controller
@@ -22,10 +23,7 @@ class AlumniController extends Controller
     public function alumniDatatables()
     {
         $alumni = Alumni::all();
-        return Datatables::of($alumni)
-                            ->addColumn('action', 'admin.alumni.action')
-                            ->addIndexColumn()
-                            ->make(true);
+        return Datatables::of($alumni)->addColumn('action', 'admin.alumni.action')->addIndexColumn()->make(true);
     }
 
     /**
