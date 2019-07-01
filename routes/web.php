@@ -68,6 +68,21 @@ Route::prefix('guru')->group(function(){
 	Route::delete('/{id}/hapus', 'Admin\GuruController@destroy')->name('guru.delete')->middleware('verified');
 });
 
+// Halaman Admin: Alumni
+Route::prefix('alumni')->group(function(){
+	Route::get('/', 'Admin\AlumniController@index')->name('alumni');
+	// Datatable
+	Route::get('/data', 'Admin\AlumniController@alumniDatatables')->name('alumni.data');
+	// Tambah Alumni
+	Route::get('/tambah', 'Admin\AlumniController@create')->name('alumni.tambah');
+	// Post Tambah & Ubah Alumni
+	Route::post('/post', 'Admin\AlumniController@store')->name('alumni.post');
+	// Edit Alumni
+	Route::get('/{id}/edit', 'Admin\AlumniController@edit')->name('alumni.edit');
+	// Hapus Alumni
+	Route::delete('/{id}/hapus', 'Admin\AlumniController@destroy')->name('alumni.delete');
+});
+
 
 //Halaman Prestaasi
 Route::prefix('prestasi')->group( function() {
