@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-	<a href="{{ route('eskul.tambah') }}" class="btn btn-info">Tambah Eskul</a><br><br>
+	<a href="{{ route('eskul.tambah') }}" class="btn btn-sm btn-primary">Tambah Eskul</a><br><br>
 	<table id="eskul">
 		<thead>
 			<tr>

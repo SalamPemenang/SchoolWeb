@@ -5,7 +5,7 @@ Kelas
 @stop
 
 @section('content')
-	<a href="{{route('kelas.tambah')}}" class="btn btn-primary">Tambah Kelas</a><br><br>
+	<a href="{{route('kelas.tambah')}}" class="btn btn-sm btn-primary">Tambah Kelas</a><br><br>
 	<table id="kelas">
 		<thead>
 			<tr>

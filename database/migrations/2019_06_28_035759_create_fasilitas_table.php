@@ -16,7 +16,7 @@ class CreateFasilitasTable extends Migration
         Schema::create('fasilitas', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('foto')->default('default.jpg');
-            $table->string('kategori')->nullable();
+            $table->string('kategori',30)->nullable();
             $table->timestamps();
         });
     }
