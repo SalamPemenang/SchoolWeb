@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Link;
+use DataTables;
+use Image;
 
 class LinkController extends Controller
 {
@@ -14,6 +16,17 @@ class LinkController extends Controller
     	return view('admin.link.index', compact('links'));
     }
 
+
+    public function linkDatatable()
+    {
+        $link = Link::all();
+        return Datatables::of($link)
+                            ->addColumn('action', 'admin.link.action')
+                            ->addIndexColumn()
+                            ->make(true);
+    }
+
+
     public function create()
     {
     	return view('admin.link.add');
@@ -22,18 +35,18 @@ class LinkController extends Controller
 
     public function store(Request $request)
     {
-    	$links = new Link;
-    	$links->nama = $request->link;
+    	$link = new Link;
+        $link->nama = $request->nama;
+    	$link->link = $request->link;
 
-        $photo = $request->file('foto');
-        $fillename = time() . '.' . $photo->getClientOriginalExtension();
-        Image::make($photo)->save(public_path('/upload/' . $fillename));
+        $foto = $request->file('foto');
+        $filename = time() .'.'. $foto->getClientOriginalExtension();
+        Image::make($foto)->save( public_path('/image/link/' . $filename));
+        $link->foto = $filename;
 
-        $link->foto = $fillename;
+        $link->save();
 
-        $links->save();
-
-        return redirect()->route('link.upload');
+        return redirect()->route('link');
     }
 
     public function edit($id)
@@ -45,10 +58,16 @@ class LinkController extends Controller
 
     public function update(Request $request, $id)
     {
-    	$links = Link::find($id);
-    	$links->nama = $request->link;
+    	$link = Link::find($id);
+    	$link->nama = $request->nama;
+        $link->link = $request->link;
 
-        $links->save();
+        $foto = $request->file('foto');
+        $filename = time() .'.'. $foto->getClientOriginalExtension();
+        Image::make($foto)->save( public_path('/image/link/' . $filename));
+        $link->foto = $filename;
+
+        $link->save();
 
         return redirect()->route('link');
     }
