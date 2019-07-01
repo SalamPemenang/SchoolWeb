@@ -5,7 +5,7 @@ Alumni
 @stop
 
 @section('content')
-	<a href="{{route('alumni.tambah')}}" class="btn btn-primary">Tambah Alumni</a><br><br>
+	<a href="{{route('alumni.tambah')}}" class="btn btn-sm btn-primary">Tambah Alumni</a><br><br>
 	<table id="alumni">
 		<thead>
 			<tr role="row">
