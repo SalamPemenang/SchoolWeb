@@ -12,7 +12,7 @@ Profile Prestasi
 		<thead>
 			<tr role="row">
 				<th class="text-center">NO</th>
-				<th class="text-center">NAMA</th>
+				<th class="text-center">LOMBA</th>
 				<th class="text-center">JUARA KE-</th>
 				<th class="text-center">TINGKAT</th>
 				<th class="text-center">PESERTA</th>

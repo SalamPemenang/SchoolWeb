@@ -69,7 +69,7 @@ Route::prefix('guru')->group(function(){
 });
 
 
-//Halaman Prestaasi
+//Halaman Admin : Prestaasi
 Route::prefix('prestasi')->group( function() {
 	Route::get('/', 'Admin\Prestasicontroller@index')->name('prestasi');
 	// DataTable
@@ -83,6 +83,22 @@ Route::prefix('prestasi')->group( function() {
 	// Hapus Data
 	Route::delete('delete/{id}', 'Admin\PrestasiController@destroy')->name('prestasi.delete');
 });
+
+
+// Halaman Admin : Link
+Route::prefix('link')->group( function() {{
+	Route::get('/', 'Admin\LinkController@index')->name('link');
+	// Tambah Data
+	Route::get('/tambah', 'Admin\LinkController@create')->name('link.add');
+	Route::post('/post', 'Admin\LinkController@store')->name('link.store');
+	// Upload Foto
+	Route::get('/upload', 'Admin\LinkController@upload')->name('link.upload');
+	// Ubah Data
+	Route::get('/edit/{id}', 'Admin\LinkController@edit')->name('link.edit');
+	Route::post('/post/{id}', 'Admin\LinkController@update')->name('link.update');
+	// Hapus Data
+	Route::delete('delete/{id}', 'Admin\LinkController@destroy')->name('link.delete');
+}});
 
 
 //Profile Sekolah di halaman admin
