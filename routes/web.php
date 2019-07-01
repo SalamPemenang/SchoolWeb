@@ -127,6 +127,8 @@ Route::prefix('profilesekolah')->group(function() {
 //Visi dan Misi di halaman Admin
 Route::prefix('visimisi')->group(function() { 
 	Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi')->middleware('verified');
+	//Datatable Visi dan Misi
+	Route::get('/data', 'Admin\VisiMisiController@visimisiDatatables')->name('visimisi.data')->middleware('verified');
 	//kelola data visi dan misi
 	Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage')->middleware('verified');
 	//tambah data visi dan misi
