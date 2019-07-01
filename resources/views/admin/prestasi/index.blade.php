@@ -12,7 +12,7 @@ Profile Prestasi
 		<thead>
 			<tr role="row">
 				<th class="text-center">NO</th>
-				<th class="text-center">NAMA</th>
+				<th class="text-center">LOMBA</th>
 				<th class="text-center">JUARA KE-</th>
 				<th class="text-center">TINGKAT</th>
 				<th class="text-center">PESERTA</th>
@@ -35,7 +35,7 @@ Profile Prestasi
     serverSide: true,
     ajax: '{!! route('prestasi.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '10px', orderable: true},
+    {data: 'DT_RowIndex', name: 'DT_RowIndex', width: '10px', orderable: true},
     {data: 'nama', name: 'nama', width: '100px', orderable: true},
     {data: 'juara_ke', name: 'juara_ke', width: '20px', orderable: true},
     {data: 'tingkat', name: 'tingkat', width: '20px', orderable: true},

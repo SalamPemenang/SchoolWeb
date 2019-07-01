@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
 
 //Verify true untuk memastikan verifikasi benar
 Auth::routes(['verify' => true]);
@@ -41,7 +44,7 @@ Route::prefix('tahun-ajaran')->group(function(){
 Route::prefix('kelas')->group(function(){
 	Route::get('/', 'Admin\KelasController@index')->name('kelas')->middleware('verified');
 	// Datatable Kelas
-	Route::get('/data', 'Admin\KelasController@kelasDatatables')->name('kelas.data')->middleware('verified');
+	Route::get('/data', 'Admin\KelasController@KelasDatatables')->name('kelas.data')->middleware('verified');
 	// Tambah Kelas
 	Route::get('/tambah', 'Admin\KelasController@create')->name('kelas.tambah')->middleware('verified');
 	// Post Tambah & Ubah Kelas
@@ -50,6 +53,16 @@ Route::prefix('kelas')->group(function(){
 	Route::get('/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit')->middleware('verified');
 	// Hapus Kelas
 	Route::delete('/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete')->middleware('verified');
+});
+
+// Halaman Admin: Siswa
+Route::prefix('siswa')->group(function(){
+	Route::get('/', 'Admin\SiswaController@index')->name('siswa')->middleware('verified');
+	Route::get('/data', 'Admin\SiswaController@siswaDatatables')->name('siswa.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\SiswaController@create')->name('siswa.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\SiswaController@store')->name('siswa.post')->middleware('verified');
+	Route::get('/{id}/edit', 'Admin\SiswaController@edit')->name('siswa.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\SiswaController@destroy')->name('siswa.delete')->middleware('verified');
 });
 
 
@@ -68,8 +81,23 @@ Route::prefix('guru')->group(function(){
 	Route::delete('/{id}/hapus', 'Admin\GuruController@destroy')->name('guru.delete')->middleware('verified');
 });
 
+// Halaman Admin: Alumni
+Route::prefix('alumni')->group(function(){
+	Route::get('/', 'Admin\AlumniController@index')->name('alumni')->middleware('verified');
+	// Datatable
+	Route::get('/data', 'Admin\AlumniController@alumniDatatables')->name('alumni.data')->middleware('verified');
+	// Tambah Alumni
+	Route::get('/tambah', 'Admin\AlumniController@create')->name('alumni.tambah')->middleware('verified');
+	// Post Tambah & Ubah Alumni
+	Route::post('/post', 'Admin\AlumniController@store')->name('alumni.post')->middleware('verified');
+	// Edit Alumni
+	Route::get('/{id}/edit', 'Admin\AlumniController@edit')->name('alumni.edit')->middleware('verified');
+	// Hapus Alumni
+	Route::delete('/{id}/hapus', 'Admin\AlumniController@destroy')->name('alumni.delete')->middleware('verified');
+});
 
-//Halaman Prestaasi
+
+//Halaman Admin : Prestaasi
 Route::prefix('prestasi')->group( function() {
 	Route::get('/', 'Admin\Prestasicontroller@index')->name('prestasi')->middleware('verified');
 	// DataTable
@@ -85,6 +113,22 @@ Route::prefix('prestasi')->group( function() {
 });
 
 
+// Halaman Admin : Link
+Route::prefix('link')->group( function() {{
+	Route::get('/', 'Admin\LinkController@index')->name('link')->middleware('verified');
+	// DataTable
+	Route::get('/data', 'Admin\LinkController@linkDatatable')->name('link.data')->middleware('verified');
+	// Tambah Data
+	Route::get('/tambah', 'Admin\LinkController@create')->name('link.add')->middleware('verified');
+	Route::post('/post', 'Admin\LinkController@store')->name('link.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/edit/{id}', 'Admin\LinkController@edit')->name('link.edit')->middleware('verified');
+	Route::post('/post/{id}', 'Admin\LinkController@update')->name('link.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('delete/{id}', 'Admin\LinkController@destroy')->name('link.delete')->middleware('verified');
+}});
+
+
 //Profile Sekolah di halaman admin
 Route::prefix('profilesekolah')->group(function() {
 	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah')->middleware('verified');
@@ -96,6 +140,8 @@ Route::prefix('profilesekolah')->group(function() {
 //Visi dan Misi di halaman Admin
 Route::prefix('visimisi')->group(function() { 
 	Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi')->middleware('verified');
+	//Datatable Visi dan Misi
+	Route::get('/data', 'Admin\VisiMisiController@visimisiDatatables')->name('visimisi.data')->middleware('verified');
 	//kelola data visi dan misi
 	Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage')->middleware('verified');
 	//tambah data visi dan misi
