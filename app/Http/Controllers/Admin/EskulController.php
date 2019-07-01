@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Guru;
+use App\Eskul;
 use DataTables;
 
-class GuruController extends Controller
+class EskulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +16,14 @@ class GuruController extends Controller
      */
     public function index()
     {
-        return view('admin.guru.index');
+        return view('admin.eskul.index');
     }
 
-    public function guruDatatables()
+    public function eskulDatatables()
     {
-        $guru = Guru::all();
-        return Datatables::of($guru)->addColumn('action', 'admin.guru.action')->make(true);
+        $eskul = Eskul::All();
+        return Datatables::of($eskul)->addColumn('action', 'admin.eskul.action')->make(true);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +31,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.guru.add');
+        return view('admin.eskul.create');
     }
 
     /**
@@ -43,24 +42,13 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->get('id');
-        if ($id) {
-            $guru = Guru::findOrFail($id);
-        }else{
-            $guru = new Guru;
-        }
+        $eskul = new Eskul;
+        $eskul->nama = $request->nama;
+        $eskul->pembimbing = $request->pembimbing;
+        $eskul->jadwal = $request->jadwal;
+        $eskul->save();
 
-        $guru->nuptk = $request->nuptk;
-        $guru->nip = $request->nip;
-        $guru->nama = $request->nama;
-        $guru->jk = $request->jk;
-        $guru->tgl_lahir = $request->tgl_lahir;
-        $guru->tmpt_lahir = $request->tmpt_lahir;
-        $guru->alamat = $request->alamat;
-        $guru->save();
-
-        return redirect()->route('guru');
-
+        return redirect('eskul');   
     }
 
     /**
@@ -82,8 +70,8 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::findOrFail($id);
-        return view('admin.guru.edit', compact('guru'));
+        $eskul = Eskul::find($id);
+        return view('admin.eskul.update', ['eskul' => $eskul]);
     }
 
     /**
@@ -95,7 +83,12 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $eskul =  Eskul::find($id);
+        $eskul->nama = $request->nama;
+        $eskul->jabatan = $request->jabatan;
+        $eskul->jadwal = $request->jadwal;
+        $eskul->save();
+        return redirect()->route('eskul');
     }
 
     /**
@@ -106,7 +99,8 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        $guru = Guru::where('id', $id)->delete();
-        return redirect()->route('guru');
+        $eskul = Eskul::find($id);
+        $eskul->delete();
+        return redirect()->route('eskul');
     }
 }

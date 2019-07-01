@@ -13,7 +13,7 @@ class CreateLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('link_table_', function (Blueprint $table) {
+        Schema::create('link', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nama')->nullable();
             $table->string('foto')->default('default.jpg');
@@ -28,6 +28,6 @@ class CreateLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('link_table_');
+        Schema::dropIfExists('link');
     }
 }

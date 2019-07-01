@@ -2,11 +2,11 @@
 
 @section('title')
 Visi Dan Misi
-@endsection
+@stop
 
 @section('page-name')
 Visi dan Misi
-@endsection
+@stop
 
 @section('content')
 <div class="row">
@@ -35,4 +35,4 @@ Visi dan Misi
 		</div>
 	</div>
 </div>
-@endsection
+@stop
