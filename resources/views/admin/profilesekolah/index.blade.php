@@ -2,11 +2,11 @@
 
 @section('title')
 	Profile Sekolah
-@endsection
+@stop
 
 @section('page-name')
 	Profile Sekolah
-@endsection
+@stop
 
 @section('content')
 	@foreach($profilesekolah as $ps)
@@ -54,4 +54,4 @@
 		</div>
 		<a href="/profilesekolah/{{ $ps->id }}/edit" class="btn btn-info btn-sm float-right"><i class="fa fa-pencil"></i>Ubah Data</a>
 	@endforeach
-@endsection
+@stop

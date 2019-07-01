@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Kelas;
+use App\Eskul;
 use DataTables;
 
-class KelasController extends Controller
+class EskulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +16,14 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('admin.kelas.index');
+        return view('admin.eskul.index');
     }
 
-    public function kelasDatatables()
+    public function eskulDatatables()
     {
-        $kelas = Kelas::all();
-        return Datatables::of($kelas)
-                            ->addColumn('action', 'admin.kelas.action')
-                            ->addIndexColumn()
-                            ->make(true);
+        $eskul = Eskul::All();
+        return Datatables::of($eskul)->addColumn('action', 'admin.eskul.action')->make(true);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +31,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('admin.kelas.add');
+        return view('admin.eskul.create');
     }
 
     /**
@@ -46,18 +42,13 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->get('id');
-        if ($id) {
-            $kelas = Kelas::findOrFail($id);
-        }else{
-            $kelas = new Kelas;
-        }
+        $eskul = new Eskul;
+        $eskul->nama = $request->nama;
+        $eskul->pembimbing = $request->pembimbing;
+        $eskul->jadwal = $request->jadwal;
+        $eskul->save();
 
-        $kelas->kelas = $request->kelas;
-        $kelas->save();
-
-        return redirect()->route('kelas');
-
+        return redirect('eskul');   
     }
 
     /**
@@ -79,8 +70,8 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        $kelas = Kelas::findOrFail($id);
-        return view('admin.kelas.edit', compact('kelas'));
+        $eskul = Eskul::find($id);
+        return view('admin.eskul.update', ['eskul' => $eskul]);
     }
 
     /**
@@ -92,7 +83,12 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $eskul =  Eskul::find($id);
+        $eskul->nama = $request->nama;
+        $eskul->jabatan = $request->jabatan;
+        $eskul->jadwal = $request->jadwal;
+        $eskul->save();
+        return redirect()->route('eskul');
     }
 
     /**
@@ -103,7 +99,8 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        $kelas = Kelas::where('id', $id)->delete();
-        return redirect()->route('kelas');
+        $eskul = Eskul::find($id);
+        $eskul->delete();
+        return redirect()->route('eskul');
     }
 }
