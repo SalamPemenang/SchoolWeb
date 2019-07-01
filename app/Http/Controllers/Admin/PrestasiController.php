@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Prestasi;
+use DataTables;
 
 class PrestasiController extends Controller
 {
@@ -12,6 +13,12 @@ class PrestasiController extends Controller
     {
     	$prestations = Prestasi::all();
     	return view('admin.prestasi.index', compact('prestations'));
+    }
+
+    public function prestasiDatatable()
+    {
+        $prestations = Prestasi::all();
+        return Datatables::of($prestations)->addColumn('action', 'admin.prestasi.action')->make(true);
     }
 
     public function create()
