@@ -80,17 +80,17 @@ Route::prefix('guru')->group(function(){
 
 // Halaman Admin: Alumni
 Route::prefix('alumni')->group(function(){
-	Route::get('/', 'Admin\AlumniController@index')->name('alumni');
+	Route::get('/', 'Admin\AlumniController@index')->name('alumni')->middleware('verified');
 	// Datatable
-	Route::get('/data', 'Admin\AlumniController@alumniDatatables')->name('alumni.data');
+	Route::get('/data', 'Admin\AlumniController@alumniDatatables')->name('alumni.data')->middleware('verified');
 	// Tambah Alumni
-	Route::get('/tambah', 'Admin\AlumniController@create')->name('alumni.tambah');
+	Route::get('/tambah', 'Admin\AlumniController@create')->name('alumni.tambah')->middleware('verified');
 	// Post Tambah & Ubah Alumni
-	Route::post('/post', 'Admin\AlumniController@store')->name('alumni.post');
+	Route::post('/post', 'Admin\AlumniController@store')->name('alumni.post')->middleware('verified');
 	// Edit Alumni
-	Route::get('/{id}/edit', 'Admin\AlumniController@edit')->name('alumni.edit');
+	Route::get('/{id}/edit', 'Admin\AlumniController@edit')->name('alumni.edit')->middleware('verified');
 	// Hapus Alumni
-	Route::delete('/{id}/hapus', 'Admin\AlumniController@destroy')->name('alumni.delete');
+	Route::delete('/{id}/hapus', 'Admin\AlumniController@destroy')->name('alumni.delete')->middleware('verified');
 });
 
 
@@ -112,17 +112,17 @@ Route::prefix('prestasi')->group( function() {
 
 // Halaman Admin : Link
 Route::prefix('link')->group( function() {{
-	Route::get('/', 'Admin\LinkController@index')->name('link');
+	Route::get('/', 'Admin\LinkController@index')->name('link')->middleware('verified');
+	// DataTable
+	Route::get('/data', 'Admin\LinkController@linkDatatable')->name('link.data')->middleware('verified');
 	// Tambah Data
-	Route::get('/tambah', 'Admin\LinkController@create')->name('link.add');
-	Route::post('/post', 'Admin\LinkController@store')->name('link.store');
-	// Upload Foto
-	Route::get('/upload', 'Admin\LinkController@upload')->name('link.upload');
+	Route::get('/tambah', 'Admin\LinkController@create')->name('link.add')->middleware('verified');
+	Route::post('/post', 'Admin\LinkController@store')->name('link.store')->middleware('verified');
 	// Ubah Data
-	Route::get('/edit/{id}', 'Admin\LinkController@edit')->name('link.edit');
-	Route::post('/post/{id}', 'Admin\LinkController@update')->name('link.update');
+	Route::get('/edit/{id}', 'Admin\LinkController@edit')->name('link.edit')->middleware('verified');
+	Route::post('/post/{id}', 'Admin\LinkController@update')->name('link.update')->middleware('verified');
 	// Hapus Data
-	Route::delete('delete/{id}', 'Admin\LinkController@destroy')->name('link.delete');
+	Route::delete('delete/{id}', 'Admin\LinkController@destroy')->name('link.delete')->middleware('verified');
 }});
 
 

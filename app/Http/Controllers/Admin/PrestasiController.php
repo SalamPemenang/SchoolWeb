@@ -18,7 +18,10 @@ class PrestasiController extends Controller
     public function prestasiDatatable()
     {
         $prestations = Prestasi::all();
-        return Datatables::of($prestations)->addColumn('action', 'admin.prestasi.action')->make(true);
+        return Datatables::of($prestations)
+                                ->addColumn('action', 'admin.prestasi.action')
+                                ->addIndexColumn()
+                                ->make(true);
     }
 
     public function create()
