@@ -5,7 +5,7 @@ Tahun Ajaran
 @stop
 
 @section('content')
-	<a href="{{route('tahun.tambah')}}">Tambah tahun ajaran</a><br><br>
+	<a href="{{route('tahun.tambah')}}" class="btn btn-sm btn-primary">Tambah Data</a><br><br>
 	<table id="tahunAjaran">
 		<thead>
 			<tr>
@@ -26,7 +26,7 @@ Tahun Ajaran
     serverSide: true,
     ajax: '{!! route('tahun.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '15px'},
+    {data: 'DT_RowIndex', name:'DT_RowIndex', width: '15px'},
     {data: 'tahun_ajaran', name: 'tahun_ajaran', width: '20px'},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]

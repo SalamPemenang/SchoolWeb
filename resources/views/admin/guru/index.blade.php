@@ -5,7 +5,7 @@ Guru
 @stop
 
 @section('content')
-	<a href="{{route('guru.tambah')}}" class="btn btn-primary">Tambah Guru</a><br><br>
+	<a href="{{route('guru.tambah')}}" class="btn btn-sm btn-primary">Tambah Guru</a><br><br>
 	<table id="guru">
 		<thead>
 			<tr role="row">
@@ -32,7 +32,7 @@ Guru
     serverSide: true,
     ajax: '{!! route('guru.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '10px', orderable: true},
+    {data: 'DT_RowIndex', name:'DT_RowIndex', width: '20px'},
     {data: 'nuptk', name: 'nuptk', width: '20px', orderable: true},
     {data: 'nip', name: 'nip', width: '20px', orderable: true},
     {data: 'nama', name: 'nama', width: '50px', orderable: true},
