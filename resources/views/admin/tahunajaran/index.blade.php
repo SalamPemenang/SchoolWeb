@@ -26,7 +26,7 @@ Tahun Ajaran
     serverSide: true,
     ajax: '{!! route('tahun.data') !!}',
     columns: [
-    {data: 'id', name: 'id', width: '15px'},
+    {data: 'DT_RowIndex', name:'DT_RowIndex', width: '15px'},
     {data: 'tahun_ajaran', name: 'tahun_ajaran', width: '20px'},
     {data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
     ]

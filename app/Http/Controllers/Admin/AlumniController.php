@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Kelas;
-use DataTables;
+use App\Alumni;
+use Image;
 
-class KelasController extends Controller
+class AlumniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +16,14 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view('admin.kelas.index');
+       return view('admin.alumni.index');
     }
 
-    public function kelasDatatables()
+    public function alumniDatatables()
     {
-        $kelas = Kelas::all();
-        return Datatables::of($kelas)
-                            ->addColumn('action', 'admin.kelas.action')
+        $alumni = Alumni::all();
+        return Datatables::of($alumni)
+                            ->addColumn('action', 'admin.alumni.action')
                             ->addIndexColumn()
                             ->make(true);
     }
@@ -35,7 +35,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('admin.kelas.add');
+        return view('admin.alumni.add');
     }
 
     /**
@@ -47,16 +47,27 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $id = $request->get('id');
+        
         if ($id) {
-            $kelas = Kelas::findOrFail($id);
+            $alumni = Alumni::findOrFail($id);
         }else{
-            $kelas = new Kelas;
+            $alumni = new Alumni;
         }
 
-        $kelas->kelas = $request->kelas;
-        $kelas->save();
+        $alumni->nama = $request->nama;
+        $alumni->jk = $request->jk;
+        $alumni->thn_lulus = $request->thn_lulus;
+        $alumni->pendidikan_lanjutan = $request->pendidikan_lanjutan;
 
-        return redirect()->route('kelas');
+        
+        $foto = $request->file('foto');
+        $filename = time() .'.'. $foto->getClientOriginalExtension();
+        Image::make($foto)->resize(400, 400)->save( public_path('/image/alumni/' . $filename));
+        $alumni->foto = $filename;
+        
+
+        $alumni->save();
+        return redirect()->route('alumni');
 
     }
 
@@ -79,8 +90,8 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        $kelas = Kelas::findOrFail($id);
-        return view('admin.kelas.edit', compact('kelas'));
+        $alumni = Alumni::findOrFail($id);
+        return view('admin.alumni.edit', compact('alumni'));
     }
 
     /**
@@ -103,7 +114,7 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        $kelas = Kelas::where('id', $id)->delete();
-        return redirect()->route('kelas');
+        $alumni = Alumni::where('id', $id)->delete();
+        return redirect()->route('alumni');
     }
 }
