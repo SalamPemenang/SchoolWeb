@@ -112,6 +112,7 @@ Route::prefix('profilesekolah')->group(function() {
 //Visi dan Misi di halaman Admin
 Route::prefix('visimisi')->group(function() { 
 	Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi');
+	//kelola data visi dan misi
 	Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage');
 	//tambah data visi dan misi
 	Route::get('/tambah', 'Admin\VisiMisiController@create')->name('visimisi.tambah');
@@ -121,4 +122,20 @@ Route::prefix('visimisi')->group(function() {
 	Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
 	//hapus data visi dan misi
 	Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus');
+});
+
+
+//Eskul di halaman admin
+Route::prefix('eskul')->group( function() {
+	Route::get('/', 'Admin\EskulController@index')->name('eskul');
+	//Datatable Eskul
+	Route::get('/data', 'Admin\EskulController@eskulDatatables')->name('eskul.data');
+	//tambah data eskul
+	Route::get('/tambah', 'Admin\EskulController@create')->name('eskul.tambah');
+	Route::post('/post', 'Admin\EskulController@store')->name('eskul.post');
+	//ubah data eskul
+	Route::get('/edit/{id}', 'Admin\EskulController@edit')->name('eskul.edit');
+	Route::put('/{id}', 'Admin\EskulController@update')->name('eskul.update');
+	//delete data eskul
+	Route::delete('/{id}', 'Admin\EskulController@destroy')->name('eskul.hapus');
 });
