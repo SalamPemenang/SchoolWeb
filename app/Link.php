@@ -12,6 +12,7 @@ class Link extends Model
 
     protected $fillable = [
     	'nama',
+    	'link',
     	'foto',
     ];
 }

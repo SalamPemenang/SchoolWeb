@@ -15,6 +15,10 @@ Halaman Link
 				@csrf
 
 				<div class="form-group">
+					<input type="text" name="nama" class="form-control" required="" maxlength="50" placeholder="Masukan Nama Website Disini">
+				</div>
+
+				<div class="form-group">
 					<input type="text" name="link" class="form-control" required="" maxlength="190" placeholder="Masukan Link Disini">
 				</div>
 

@@ -5,7 +5,7 @@ Tahun Ajaran
 @stop
 
 @section('content')
-	<a href="{{route('tahun.tambah')}}">Tambah tahun ajaran</a><br><br>
+	<a href="{{route('tahun.tambah')}}" class="btn btn-sm btn-primary">Tambah Data</a><br><br>
 	<table id="tahunAjaran">
 		<thead>
 			<tr>

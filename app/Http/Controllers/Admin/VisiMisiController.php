@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\VisiMisi;
+use DataTables;
 
 class VisiMisiController extends Controller
 {
@@ -19,10 +20,10 @@ class VisiMisiController extends Controller
         return view('admin.visimisi.index', ['visimisi'=>$visimisi]);
     }
 
-    public function manage() 
+    public function visimisiDatatables()
     {
         $visimisi = VisiMisi::All();
-        return view('admin.visimisi.manage', ['visimisi' => $visimisi]);
+        return Datatables::of($visimisi)->addColumn('action', 'admin.visimisi.action')->make(true);
     }
     /**
      * Show the form for creating a new resource.
