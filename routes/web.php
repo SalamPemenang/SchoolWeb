@@ -41,7 +41,7 @@ Route::prefix('tahun-ajaran')->group(function(){
 Route::prefix('kelas')->group(function(){
 	Route::get('/', 'Admin\KelasController@index')->name('kelas')->middleware('verified');
 	// Datatable Kelas
-	Route::get('/data', 'Admin\KelasController@kelasDatatables')->name('kelas.data')->middleware('verified');
+	Route::get('/data', 'Admin\KelasController@KelasDatatables')->name('kelas.data')->middleware('verified');
 	// Tambah Kelas
 	Route::get('/tambah', 'Admin\KelasController@create')->name('kelas.tambah')->middleware('verified');
 	// Post Tambah & Ubah Kelas
@@ -50,6 +50,16 @@ Route::prefix('kelas')->group(function(){
 	Route::get('/{id}/edit', 'Admin\KelasController@edit')->name('kelas.edit')->middleware('verified');
 	// Hapus Kelas
 	Route::delete('/{id}/hapus', 'Admin\KelasController@destroy')->name('kelas.delete')->middleware('verified');
+});
+
+// Halaman Admin: Siswa
+Route::prefix('siswa')->group(function(){
+	Route::get('/', 'Admin\SiswaController@index')->name('siswa')->middleware('verified');
+	Route::get('/data', 'Admin\SiswaController@siswaDatatables')->name('siswa.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\SiswaController@create')->name('siswa.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\SiswaController@store')->name('siswa.post')->middleware('verified');
+	Route::get('/{id}/edit', 'Admin\SiswaController@edit')->name('siswa.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\SiswaController@destroy')->name('siswa.delete')->middleware('verified');
 });
 
 
