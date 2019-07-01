@@ -22,7 +22,10 @@ class TahunAjaranController extends Controller
     public function tahunDatatables()
     {
         $tahun = TahunAjaran::all();
-        return Datatables::of($tahun)->addColumn('action', 'admin.tahunajaran.action')->make(true);
+        return Datatables::of($tahun)
+                            ->addColumn('action', 'admin.tahunajaran.action')
+                            ->addIndexColumn()
+                            ->make(true);
     }
 
     /**

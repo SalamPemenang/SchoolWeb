@@ -22,7 +22,10 @@ class GuruController extends Controller
     public function guruDatatables()
     {
         $guru = Guru::all();
-        return Datatables::of($guru)->addColumn('action', 'admin.guru.action')->make(true);
+        return Datatables::of($guru)
+                            ->addColumn('action', 'admin.guru.action')
+                            ->addIndexColumn()
+                            ->make(true);
     }
 
     /**
