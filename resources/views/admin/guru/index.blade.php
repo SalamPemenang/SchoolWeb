@@ -5,7 +5,7 @@ Guru
 @stop
 
 @section('content')
-	<a href="{{route('guru.tambah')}}" class="btn btn-primary">Tambah Guru</a><br><br>
+	<a href="{{route('guru.tambah')}}" class="btn btn-sm btn-primary">Tambah Guru</a><br><br>
 	<table id="guru">
 		<thead>
 			<tr role="row">
