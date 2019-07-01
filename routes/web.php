@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
+Route::post('captcha', 'CaptchaController@captchaValidate');
+Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
 
 //Verify true untuk memastikan verifikasi benar
 Auth::routes(['verify' => true]);
