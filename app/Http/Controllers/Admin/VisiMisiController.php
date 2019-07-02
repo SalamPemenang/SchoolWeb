@@ -17,13 +17,16 @@ class VisiMisiController extends Controller
     public function index()
     {
         $visimisi = VisiMisi::All();
-        return view('admin.visimisi.index', ['visimisi'=>$visimisi]);
+        return view('admin.visimisi.index', compact('visimisi'));
     }
 
     public function visimisiDatatables()
     {
         $visimisi = VisiMisi::All();
-        return Datatables::of($visimisi)->addColumn('action', 'admin.visimisi.action')->make(true);
+        return Datatables::of($visimisi)
+                            ->addColumn('action', 'admin.visimisi.action')
+                            ->addIndexColumn()
+                            ->make(true);
     }
     /**
      * Show the form for creating a new resource.
@@ -49,7 +52,7 @@ class VisiMisiController extends Controller
         $visimisi->misi = $request->misi;
         $visimisi->save();
 
-        return redirect('visimisi');
+        return redirect()->route('visimisi');
     }
 
     /**
@@ -72,7 +75,7 @@ class VisiMisiController extends Controller
     public function edit($id)
     {
         $visimisi = VisiMisi::find($id);
-        return view('admin.visimisi.update', ['visimisi' => $visimisi]);
+        return view('admin.visimisi.update', compact('visimisi'));
     }
 
     /**
@@ -88,7 +91,7 @@ class VisiMisiController extends Controller
         $visimisi->visi = $request->visi;
         $visimisi->misi = $request->misi;
         $visimisi->save();
-        return redirect('visimisi');
+        return redirect()->route('visimisi');
     }
 
     /**
@@ -102,6 +105,6 @@ class VisiMisiController extends Controller
         $visimisi = VisiMisi::find($id);
         $visimisi->delete();
 
-        return redirect('visimisi');
+        return redirect()->route('visimisi');
     }
 }
