@@ -22,7 +22,8 @@ class EskulController extends Controller
     public function eskulDatatables()
     {
         $eskul = Eskul::All();
-        return Datatables::of($eskul)->addColumn('action', 'admin.eskul.action')->make(true);
+        return Datatables::of($eskul)->addColumn('action', 'admin.eskul.action')
+                                     ->make(true);
     }
     /**
      * Show the form for creating a new resource.
