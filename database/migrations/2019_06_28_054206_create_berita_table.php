@@ -18,7 +18,7 @@ class CreateBeritaTable extends Migration
             $table->string('foto')->default('default.jpg');
             $table->string('judul',50)->nullable();
             $table->string('deskripsi')->nullable();
-            $table->dateTime('tgl');
+            $table->date('tgl');
             $table->timestamps();
         });
     }
