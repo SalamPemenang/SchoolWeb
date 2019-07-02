@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-3">
-	<h4>{{ $struktur->foto }}</h4>
+	<li><h4>{{ $struktur->foto }}</h4></li>
 	<img src="/image/strukturorganisasi/{{ $struktur->foto }}" class="img-responsive img-thumbnail">
 	<br>
 	<br>

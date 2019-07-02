@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-	<a href="{{ route('struktur.tambah') }}" class="btn btn-primary">Tambah</a>
+	<a href="{{ route('struktur.tambah') }}" class="btn btn-primary" title="Tambah Data">Tambah</a>
 	<br><br>
 	<table id="struktur">
 		<thead>

@@ -22,7 +22,7 @@
 				<th>Website</th>
 				<th>Email</th>
 				<th>No SK Sekolah</th>
-				<th>Tanggak Berdiri Sekolah</th>
+				<th>Tanggal Berdiri Sekolah</th>
 				<th>Action</th>
 			</tr>
 		</thead>
