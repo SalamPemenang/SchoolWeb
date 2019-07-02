@@ -35,6 +35,9 @@ class LinkController extends Controller
 
     public function store(Request $request)
     {
+
+        dd($request->foto);
+        die();
     	$link = new Link;
         $link->nama = $request->nama;
     	$link->link = $request->link;
