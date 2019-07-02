@@ -169,3 +169,13 @@ Route::prefix('eskul')->group( function() {
 	//delete data eskul
 	Route::delete('/{id}', 'Admin\EskulController@destroy')->name('eskul.hapus')->middleware('verified');
 });
+
+// Halaman Admin: Pengumuman
+Route::prefix('pengumuman')->group(function(){
+	Route::get('/', 'Admin\pengumumanController@index')->name('pengumuman')->middleware('verified');
+	Route::get('/data', 'Admin\pengumumanController@pengumumanDatatables')->name('pengumuman.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\pengumumanController@create')->name('pengumuman.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\pengumumanController@store')->name('pengumuman.post')->middleware('verified');
+	Route::get('/{id}/edit-pengumuman', 'Admin\pengumumanController@edit')->name('pengumuman.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\pengumumanController@destroy')->name('pengumuman.delete')->middleware('verified');
+});
