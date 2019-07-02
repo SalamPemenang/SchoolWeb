@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\VisiMisi;
+use App\StrukturOrganisasi;
 use DataTables;
+use Image;
 
-class VisiMisiController extends Controller
+class StrukturOrganisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,26 +17,27 @@ class VisiMisiController extends Controller
      */
     public function index()
     {
-        $visimisi = VisiMisi::All();
-        return view('admin.visimisi.index', compact('visimisi'));
+        return view('admin.strukturorganisasi.index');
     }
 
-    public function visimisiDatatables()
-    {
-        $visimisi = VisiMisi::All();
-        return Datatables::of($visimisi)
-                            ->addColumn('action', 'admin.visimisi.action')
-                            ->addIndexColumn()
-                            ->make(true);
-    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function strukturDatatable() 
+    {
+        $struktur = StrukturOrganisasi::All();
+        return Datatables()->of($struktur)
+                           ->addColumn('action', 'admin.strukturorganisasi.action')
+                           ->addIndexColumn()
+                           ->make(true);
+    } 
+
     public function create()
     {
-        return view('admin.visimisi.create');
+        return view('admin.strukturorganisasi.create');
     }
 
     /**
@@ -46,13 +48,15 @@ class VisiMisiController extends Controller
      */
     public function store(Request $request)
     {
+        $struktur = new StrukturOrganisasi;
+        $foto = $request->file('foto');
+        $filename = time() .'.'. $foto->getClientOriginalExtension();
+        Image::make($foto)->resize(400, 400)->save( public_path('/image/strukturorganisasi/' .$filename));
+        $struktur->foto = $filename;
+        
+        $struktur->save();
 
-        $visimisi = new VisiMisi;
-        $visimisi->visi = $request->visi;
-        $visimisi->misi = $request->misi;
-        $visimisi->save();
-
-        return redirect()->route('visimisi');
+        return redirect()->route('struktur');
     }
 
     /**
@@ -63,7 +67,8 @@ class VisiMisiController extends Controller
      */
     public function show($id)
     {
-        //
+        $struktur = StrukturOrganisasi::find($id);
+        return view('admin.strukturorganisasi.show', compact('struktur'));
     }
 
     /**
@@ -74,8 +79,8 @@ class VisiMisiController extends Controller
      */
     public function edit($id)
     {
-        $visimisi = VisiMisi::find($id);
-        return view('admin.visimisi.update', compact('visimisi'));
+        $struktur = StrukturOrganisasi::find($id);
+        return view('admin.strukturorganisasi.update');
     }
 
     /**
@@ -87,11 +92,7 @@ class VisiMisiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $visimisi = VisiMisi::find($id);
-        $visimisi->visi = $request->visi;
-        $visimisi->misi = $request->misi;
-        $visimisi->save();
-        return redirect()->route('visimisi');
+       
     }
 
     /**
@@ -102,9 +103,9 @@ class VisiMisiController extends Controller
      */
     public function destroy($id)
     {
-        $visimisi = VisiMisi::find($id);
-        $visimisi->delete();
+        $struktur = StrukturOrganisasi::find($id);
+        $struktur->delete();
 
-        return redirect()->route('visimisi');
+        return redirect()->route('struktur');
     }
 }
