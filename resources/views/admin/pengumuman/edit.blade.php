@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Edit Siswa
+Edit pengumuman
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@ Edit Siswa
 
 	<div class="form-group">
 		<label for="deskripsi">Deskripsi *</label>
-		<textarea id="deskripsi" name="deskripsi" style="width: 100%; height: 300px;">{{$pengumuman->deskripsi}}"</textarea>
+		<textarea id="deskripsi" name="deskripsi" style="width: 100%; height: 300px;">{{$pengumuman->deskripsi}}</textarea>
 	</div>
 
 	<div class="form-group">
