@@ -179,3 +179,13 @@ Route::prefix('pengumuman')->group(function(){
 	Route::get('/{id}/edit-pengumuman', 'Admin\pengumumanController@edit')->name('pengumuman.edit')->middleware('verified');
 	Route::delete('/{id}/hapus', 'Admin\pengumumanController@destroy')->name('pengumuman.delete')->middleware('verified');
 });
+
+// Halaman Admin: Pengumuman
+Route::prefix('berita')->group(function(){
+	Route::get('/', 'Admin\beritaController@index')->name('berita')->middleware('verified');
+	Route::get('/data', 'Admin\beritaController@beritaDatatables')->name('berita.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\beritaController@create')->name('berita.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\beritaController@store')->name('berita.post')->middleware('verified');
+	Route::get('/{id}/edit-berita', 'Admin\beritaController@edit')->name('berita.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\beritaController@destroy')->name('berita.delete')->middleware('verified');
+});
