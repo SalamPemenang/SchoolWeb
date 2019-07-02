@@ -163,42 +163,65 @@ Route::prefix('galeri')->group( function() {{
 
 
 //Profile Sekolah di halaman admin
+//Halaman Admin : Profile Sekolah
 Route::prefix('profilesekolah')->group(function() {
 	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah')->middleware('verified');
+	//Datatables
+	Route::get('/data', 'Admin\ProfileSekolahController@profileDatatables')->name('profilesekolah.data')->middleware('verified');
+	//Tambah Data
+	Route::get('/tambah', 'Admin\ProfileSekolahController@create')->name('profilesekolah.tambah')->middleware('verified');
+	Route::post('/add', 'Admin\ProfileSekolahController@store')->name('profilesekolah.add')->middleware('verified');
 	//ubah Profile 
 	Route::get('/{id}/edit', 'Admin\ProfileSekolahController@edit')->name('profilesekolah.edit')->middleware('verified');
 	Route::put('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post')->middleware('verified');
+	//Hapus Data
+	Route::delete('/{id}', 'Admin\ProfileSekolahController@destroy')->name('profilesekolah.hapus')->middleware('verified');
 });
 
-//Visi dan Misi di halaman Admin
+//Halaman Admin : Visi dan Misi
 Route::prefix('visimisi')->group(function() { 
 	Route::get('/', 'Admin\VisiMisiController@index')->name('visimisi')->middleware('verified');
-	//Datatable Visi dan Misi
+	//Datatable 
 	Route::get('/data', 'Admin\VisiMisiController@visimisiDatatables')->name('visimisi.data')->middleware('verified');
-	//kelola data visi dan misi
-	Route::get('/manage', 'Admin\VisiMisiController@manage')->name('visimisi.manage')->middleware('verified');
-	//tambah data visi dan misi
+	//tambah data 
 	Route::get('/tambah', 'Admin\VisiMisiController@create')->name('visimisi.tambah')->middleware('verified');
 	Route::post('/post', 'Admin\VisiMisiController@store')->name('visimisi.add');
-	//ubah data visi dan misi
+	//ubah data 
 	Route::get('/{id}/edit', 'Admin\VisiMisiController@edit')->name('visimisi.edit')->middleware('verified');
 	Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
-	//hapus data visi dan misi
+	//hapus data 
 	Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus')->middleware('verified');
 });
 
 
-//Eskul di halaman admin
+//Halaman Admin : Eskul
 Route::prefix('eskul')->group( function() {
 	Route::get('/', 'Admin\EskulController@index')->name('eskul')->middleware('verified');
-	//Datatable Eskul
+	//Datatable 
 	Route::get('/data', 'Admin\EskulController@eskulDatatables')->name('eskul.data')->middleware('verified');
-	//tambah data eskul
+	//tambah data 
 	Route::get('/tambah', 'Admin\EskulController@create')->name('eskul.tambah')->middleware('verified');
 	Route::post('/post', 'Admin\EskulController@store')->name('eskul.post')->middleware('verified');
-	//ubah data eskul
+	//ubah data 
 	Route::get('/edit/{id}', 'Admin\EskulController@edit')->name('eskul.edit')->middleware('verified');
 	Route::put('/{id}', 'Admin\EskulController@update')->name('eskul.update')->middleware('verified');
-	//delete data eskul
+	//delete data 
 	Route::delete('/{id}', 'Admin\EskulController@destroy')->name('eskul.hapus')->middleware('verified');
+});
+
+//Halaman Admin : Struktur Organisasi
+Route::prefix('struktur-organisasi')->group( function() {
+	Route::get('/', 'Admin\StrukturOrganisasiController@index')->name('struktur')->middleware('verified');
+	//Datatable 
+	Route::get('/data', 'Admin\StrukturOrganisasiController@strukturDatatable')->name('struktur.data')->middleware('verified');
+	//tambah data 
+	Route::get('/tambah', 'Admin\StrukturOrganisasiController@create')->name('struktur.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\StrukturOrganisasiController@store')->name('struktur.post')->middleware('verified');
+	//Lihat data 
+	Route::get('/lihat/{id}', 'Admin\StrukturOrganisasiController@show')->name('struktur.lihat')->middleware('verified');
+	//ubah data
+	Route::get('/edit/{id}', 'Admin\StrukturOrganisasiController@edit')->name('struktur.edit')->middleware('verified');
+	Route::put('/{id}', 'Admin\StrukturOrganisasiController@update')->name('struktur.update')->middleware('verified');
+	//Hapus Data 
+	Route::delete('/{id}', 'Admin\StrukturOrganisasiController@destroy')->name('struktur.hapus')->middleware('verified');
 });

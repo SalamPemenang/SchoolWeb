@@ -9,49 +9,47 @@
 @stop
 
 @section('content')
-	@foreach($profilesekolah as $ps)
-		<div class="row">
-			<div class="col-md-4">
-				<h3>{{ $ps->nama }}</h3>
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-2">
-				<label>NPSN</label>
-			</div>
-			<div class="col-md-5">: {{ $ps->npsn }}</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">
-				<label>Kode Ujian Nasional</label> 
-			</div>
-			<div class="col-md-5">: {{ $ps->kode_un }}</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">
-				<label>NIS</label> 
-			</div>
-			<div class="col-md-5">: {{ $ps->nis }}</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">
-				<label>Website</label> 
-			</div>
-			<div class="col-md-5">: {{ $ps->website }}</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">
-				<label>NO SK Pendirian Sekolah</label> 
-			</div>
-			<div class="col-md-5">: {{ $ps->no_sk_pendirian_sekolah }}</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2">
-				<label>Tanggal Berdiri Sekolah</label> 
-			</div>
-			<div class="col-md-5">: {{ $ps->tgl_pendirian }}</div>
-		</div>
-		<a href="/profilesekolah/{{ $ps->id }}/edit" class="btn btn-info btn-sm float-right"><i class="fa fa-pencil"></i>Ubah Data</a>
-	@endforeach
+	<a href="{{ route('profilesekolah.tambah') }}" class="btn btn-primary">Tambah</a>
+	<br><br>
+	<table id="profile_sekolah">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Nama Sekolah</th>
+				<th>NPSN</th>
+				<th>Kode UN</th>
+				<th>Nomor Induk Sekolah</th>
+				<th>Website</th>
+				<th>Email</th>
+				<th>No SK Sekolah</th>
+				<th>Tanggak Berdiri Sekolah</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+	</table>
 @stop
+@push('scripts')
+	<script>
+		$(function() {
+			$('#profile_sekolah').DataTable({
+				order: [[0, 'asc']],
+				processing: true,
+				responsive: true,
+				serverSide: true,
+				ajax: '{!! route('profilesekolah.data') !!}',
+				columns: [
+                     {data: 'DT_RowIndex', name: 'DT_RowIndex', width: '15px', orderable: true},
+                     {data: 'nama', name: 'nama', width: '20px', orderable: true},
+                     {data: 'npsn', name: 'npsn', width: '20px', orderable: true},
+                     {data: 'kode_un', name: 'kode_un', width: '20px', orderable: true},
+                     {data: 'nis', name: 'nis', width: '20px', orderable: true},
+                     {data: 'website', name: 'website', width: '20px', orderable: true},
+                     {data: 'email', name: 'email', width: '20px', orderable: true},
+                     {data: 'no_sk_pendirian_sekolah', name: 'no_sk_pendirian_sekolah', width: '20px', orderable: true},
+                     {data: 'tgl_pendirian', name: 'tgl_pendirian', width: '20px', orderable: true},
+                     {data: 'action', name: 'action', width: '20px', orderable: false, searchable: false,},
+				]
+			})
+		})
+	</script>
+@endpush
