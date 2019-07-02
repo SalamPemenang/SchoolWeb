@@ -221,7 +221,7 @@ Route::prefix('struktur-organisasi')->group( function() {
 	Route::get('/lihat/{id}', 'Admin\StrukturOrganisasiController@show')->name('struktur.lihat')->middleware('verified');
 	//ubah data
 	Route::get('/edit/{id}', 'Admin\StrukturOrganisasiController@edit')->name('struktur.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\StrukturOrganisasiController@update')->name('struktur.update')->middleware('verified');
+	Route::post('/{id}', 'Admin\StrukturOrganisasiController@update')->name('struktur.update')->middleware('verified');
 	//Hapus Data 
 	Route::delete('/{id}', 'Admin\StrukturOrganisasiController@destroy')->name('struktur.hapus')->middleware('verified');
 });

@@ -80,7 +80,7 @@ class StrukturOrganisasiController extends Controller
     public function edit($id)
     {
         $struktur = StrukturOrganisasi::find($id);
-        return view('admin.strukturorganisasi.update');
+        return view('admin.strukturorganisasi.update', compact('struktur'));
     }
 
     /**
@@ -92,7 +92,15 @@ class StrukturOrganisasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        $struktur = StrukturOrganisasi::find($id);
+        $foto = $request->file('foto');
+        $filename = time() .'.'. $foto->getClientOriginalExtension();
+        Image::make($foto)->resize(400, 400)->save( public_path('/image/strukturorganisasi/' .$filename));
+        $struktur->foto = $filename;
+        
+        $struktur->save();
+
+        return redirect()->route('struktur');
     }
 
     /**
