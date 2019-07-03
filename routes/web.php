@@ -129,6 +129,40 @@ Route::prefix('link')->group( function() {{
 }});
 
 
+// Halaman Admin : Fasilitas
+Route::prefix('fasilitas')->group( function() {{
+	Route::get('/', 'Admin\FasilitasController@index')->name('fasilitas')->middleware('verified');
+	// Manage Data
+	Route::get('/manage', 'Admin\FasilitasController@manage')->name('fasilitas.manage')->middleware('verified');
+	// Tambah Data
+	Route::get('/tambah', 'Admin\FasilitasController@create')->name('fasilitas.add')->middleware('verified');
+	Route::post('/post', 'Admin\FasilitasController@store')->name('fasilitas.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/edit/{id}', 'Admin\FasilitasController@edit')->name('fasilitas.edit')->middleware('verified');
+	Route::post('/post/{id}', 'Admin\FasilitasController@update')->name('fasilitas.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete')->middleware('verified');
+}});
+
+
+
+// Halaman Admin : Galleri
+Route::prefix('galeri')->group( function() {{
+	Route::get('/', 'Admin\GaleriController@index')->name('galeri')->middleware('verified');
+	// Manage Data
+	Route::get('/manage', 'Admin\GaleriController@manage')->name('galeri.manage')->middleware('verified');
+	// Tambah Data
+	Route::get('/tambah', 'Admin\GaleriController@create')->name('galeri.add')->middleware('verified');
+	Route::post('/post', 'Admin\GaleriController@store')->name('galeri.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/edit/{id}', 'Admin\GaleriController@edit')->name('galeri.edit')->middleware('verified');
+	Route::post('/post/{id}', 'Admin\GaleriController@update')->name('galeri.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete')->middleware('verified');
+}});
+
+
+//Profile Sekolah di halaman admin
 //Halaman Admin : Profile Sekolah
 Route::prefix('tentangesekolah')->group(function() {
 	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah')->middleware('verified');
