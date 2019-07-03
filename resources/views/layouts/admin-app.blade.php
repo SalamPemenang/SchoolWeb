@@ -191,6 +191,11 @@
     <!-- sidebar menu: -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menu</li>
+      <li>
+          <a href="{{route('home')}}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+      </li>
       <li class="treeview">
           <a href="#">
             <i class="fa fa-user"></i> <span>Profile Sekolah</span>
@@ -230,7 +235,7 @@
           </ul>
       </li>
        <li>
-          <a href="#">
+          <a href="{{route('fasilitas')}}">
             <i class="fa fa-picture-o"></i> <span>Fasilitas</span>
           </a>
       </li>
@@ -240,7 +245,7 @@
           </a>
       </li>
        <li>
-          <a href="#">
+          <a href="{{route('galeri')}}">
             <i class="fa fa-picture-o"></i> <span>Galeri</span>
           </a>
       </li>
