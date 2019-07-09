@@ -44,9 +44,6 @@
                   <ul class="menu">
                     <li><!-- start message -->
                       <a href="#">
-                        <div class="pull-left">
-                          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
                         <h4>
                           Support Team
                           <small><i class="fa fa-clock-o"></i> 5 mins</small>
@@ -117,14 +114,11 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs"><b>{{ Auth::user()->name }}</b></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
@@ -180,17 +174,20 @@
   <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">
-      <div class="pull-left image">
-        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      <div class="pull-left">
+        <h4 style="color: white;">{{ Auth::user()->name }}</h4>
       </div>
-      <div class="pull-left info">
-        <p>{{ Auth::user()->name }}</p>
-      </div>
+      <br><br>
     </div>
 
     <!-- sidebar menu: -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menu</li>
+      <li>
+          <a href="{{route('home')}}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+      </li>
       <li class="treeview">
           <a href="#">
             <i class="fa fa-user"></i> <span>Profile Sekolah</span>
@@ -230,7 +227,7 @@
           </ul>
       </li>
        <li>
-          <a href="#">
+          <a href="{{route('fasilitas')}}">
             <i class="fa fa-picture-o"></i> <span>Fasilitas</span>
           </a>
       </li>
@@ -240,7 +237,7 @@
           </a>
       </li>
        <li>
-          <a href="#">
+          <a href="{{route('galeri')}}">
             <i class="fa fa-picture-o"></i> <span>Galeri</span>
           </a>
       </li>
