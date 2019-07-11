@@ -46,6 +46,7 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
+
         $id = $request->get('id');
         if ($id) {
             $guru = Guru::findOrFail($id);

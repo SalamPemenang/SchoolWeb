@@ -17,6 +17,10 @@ Ubah Data
 		<div class="div_image"></div>
 		<input type="file" name="foto" class="form-control" multiple id="uploadImage" value="{{ $struktur->foto }}" required>
 		<sup><label for="foto">{{ $struktur->foto }}</label></sup>
+		<br>
+		@error('foto')
+			<span class="invalid-feedback text-danger">{{ $message }}</span>
+		@enderror
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Simpan</button>

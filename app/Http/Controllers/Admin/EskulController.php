@@ -22,7 +22,8 @@ class EskulController extends Controller
     public function eskulDatatables()
     {
         $eskul = Eskul::All();
-        return Datatables::of($eskul)->addColumn('action', 'admin.eskul.action')
+        return Datatables::of($eskul)->addIndexColumn()
+                                     ->addColumn('action', 'admin.eskul.action')
                                      ->make(true);
     }
     /**
@@ -43,13 +44,24 @@ class EskulController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'max' => 'Maksimal form ini diisi 50 karakter.',
+            'alpha' => 'Form ini hanya bisi diisi oleh Teks.'
+        ];
+        $this->validate($request, [
+            'nama' => 'required|alpha|max:50',
+            'pembimbing' => 'required|alpha|max:50',
+            'jadwal' => 'required'
+        ], $message);
+
         $eskul = new Eskul;
         $eskul->nama = $request->nama;
         $eskul->pembimbing = $request->pembimbing;
         $eskul->jadwal = $request->jadwal;
         $eskul->save();
 
-        return redirect('eskul');   
+        return redirect()->route('eskul');   
     }
 
     /**
@@ -72,7 +84,7 @@ class EskulController extends Controller
     public function edit($id)
     {
         $eskul = Eskul::find($id);
-        return view('admin.eskul.update', ['eskul' => $eskul]);
+        return view('admin.eskul.update', compact('eskul'));
     }
 
     /**
@@ -84,9 +96,20 @@ class EskulController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $message = [
+            'required' => 'Form ini harus diisi.',
+            'max' => 'Maksimal form ini diisi 50 karakter.',
+            'alpha' => 'Form ini hanya bisi diisi oleh Teks.'
+        ];
+        $this->validate($request, [
+            'nama' => 'required|alpha|max:50',
+            'pembimbing' => 'required|alpha|max:50',
+            'jadwal' => 'required'
+        ], $message);
+        
         $eskul =  Eskul::find($id);
         $eskul->nama = $request->nama;
-        $eskul->jabatan = $request->jabatan;
+        $eskul->pembimbing = $request->pembimbing;
         $eskul->jadwal = $request->jadwal;
         $eskul->save();
         return redirect()->route('eskul');
