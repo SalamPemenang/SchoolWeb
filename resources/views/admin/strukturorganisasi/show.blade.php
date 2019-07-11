@@ -7,10 +7,10 @@
 @section('content')
 <div class="row">
 	<div class="col-md-3">
-	<li><h4>{{ $struktur->foto }}</h4></li>
-	<img src="/image/strukturorganisasi/{{ $struktur->foto }}" class="img-responsive img-thumbnail">
-	<br>
-	<br>
-	<a href="{{ route('struktur') }}" class="btn btn-primary">Kembali</a>
-</div>
+		<h4>{{ $struktur->foto }}</h4>
+		<img src="/image/strukturorganisasi/{{ $struktur->foto }}" class="img-responsive img-thumbnail">
+		<br>
+		<br>
+		<a href="{{ route('struktur') }}" class="btn btn-warning">Kembali</a>
+	</div>
 @stop	

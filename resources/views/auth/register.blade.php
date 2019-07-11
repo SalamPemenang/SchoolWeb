@@ -61,7 +61,7 @@
                             </div>
                         </div>
 
-                         {{-- <div class="form-group row">
+                        {{--  <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
                                    @if($errors->has('g-recaptcha-response'))
@@ -72,7 +72,7 @@
                                         </span>
                                    @endif
                             </div>
-                        </div>                         --}}
+                        </div>         --}}                
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

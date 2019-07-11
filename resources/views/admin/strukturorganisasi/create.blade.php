@@ -16,8 +16,12 @@ Tambah Data
 		<br>
 		<div class="div_image"></div>
 		<input type="file" name="foto" class="form-control" multiple id="uploadImage">
+		@error('foto')
+			<span class="invalid-feedback text-danger">{{ $message }}</span>
+		@enderror
 	</div>
 	<div class="form-group">
+		<a href="{{ route('struktur') }}" class="btn btn-warning">Kembali</a>
 		<button type="submit" class="btn btn-primary">Simpan</button>
 	</div>
 </form>
