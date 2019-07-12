@@ -19,8 +19,9 @@ Tambah Galleri
 				<div class="form-group">
 					<select name="kategori" class="form-control" required="">
 						<option value="">-Pilih Kategori-</option>
-						<option value="">Kantin</option>
-						<option value="">Perpustakaan</option>
+						@foreach( $categories as $category )
+							<option value="{{ $category->id }}">{{ $category->nama }}</option>
+						@endforeach
 					</select>
 				</div>
 

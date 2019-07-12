@@ -26,7 +26,8 @@ class GaleriController extends Controller
 
     public function create()
     {
-    	return view('admin.galeri.add');
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.add', compact('categories'));
     }
 
 
@@ -50,7 +51,8 @@ class GaleriController extends Controller
     public function edit($id)
     {
     	$galeri = Gallery::find($id);
-    	return view('admin.galeri.edit', compact('galeri'));
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.edit', compact('galeri', 'categories'));
     }
 
 

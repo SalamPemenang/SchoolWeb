@@ -26,7 +26,8 @@ class FasilitasController extends Controller
 
     public function create()
     {
-    	return view('admin.fasilitas.add');
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.add', compact('categories'));
     }
 
 
@@ -50,7 +51,8 @@ class FasilitasController extends Controller
     public function edit($id)
     {
     	$fasilitas = Fasilitas::find($id);
-    	return view('admin.fasilitas.edit', compact('fasilitas'));
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.edit', compact('fasilitas', 'categories'));
     }
 
 
