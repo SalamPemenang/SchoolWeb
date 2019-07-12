@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFasilitasTable extends Migration
+class CreateGaleriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateFasilitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('fasilitas', function (Blueprint $table) {
+        Schema::create('galeri', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('foto')->default('default.jpg');
-            $table->string('kategori',30)->nullable();
+            $table->string('video')->nullable();
+            $table->unsignedInteger('id_category_galeri')->nullable();
+            $table->foreign('id_category_galeri')->references('id')->on('category_gallery')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateFasilitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fasilitas');
+        Schema::dropIfExists('galeri');
     }
 }
