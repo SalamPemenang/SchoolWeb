@@ -48,6 +48,16 @@ class StrukturOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 2mb'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max: 2000'
+        ], $message);
+
         $struktur = new StrukturOrganisasi;
         $foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();
@@ -92,6 +102,16 @@ class StrukturOrganisasiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 2mb'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max: 2000'
+        ], $message);
+        
         $struktur = StrukturOrganisasi::find($id);
         $foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();

@@ -47,6 +47,16 @@ class VisiMisiController extends Controller
     public function store(Request $request)
     {
 
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'max' => 'Form ini harus diisi maksimal 190 karakter.'
+        ];
+
+        $this->validate($request, [
+            'visi' => 'required|max:190',
+            'misi' => 'required|max:190'
+        ], $message);
+        
         $visimisi = new VisiMisi;
         $visimisi->visi = $request->visi;
         $visimisi->misi = $request->misi;
@@ -87,6 +97,16 @@ class VisiMisiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'max' => 'Form ini harus diisi maksimal 190 karakter.'
+        ];
+
+        $this->validate($request, [
+            'visi' => 'required|max:190',
+            'misi' => 'required|max:190'
+        ], $message);
+        
         $visimisi = VisiMisi::find($id);
         $visimisi->visi = $request->visi;
         $visimisi->misi = $request->misi;

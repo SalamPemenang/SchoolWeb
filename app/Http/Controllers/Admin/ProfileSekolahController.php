@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ProfileSekolah;
 use DataTables;
+use Image;
 
 class ProfileSekolahController extends Controller
 {
@@ -47,15 +48,57 @@ class ProfileSekolahController extends Controller
      */
     public function store(Request $request)
     {
+
+        $messages = [
+            'required' => 'Form Ini Harus Diisi.',
+            'min' => 'Form ini harus diisi minimal 4 karakter.',
+            'max' => 'form ini harus diisi maksimal 200 karakter',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'numeric' => 'Form ini Harus diisi oleh angka.',
+            'alpha' => 'Form ini harus diisi oleh teks.',
+            'email' => 'Anda Memasukan Alamat email tidak benar.',
+            'url' => 'Silahkan Masukan Alamat URL yang benar.'
+        ];
+
+        $this->validate($request, [
+            'logo' => 'required|mimes:jpeg,jpg,png|max:2000',
+            'nama' => 'required|min:7|max:40',
+            'npsn' => 'required|numeric',
+            'nis' => 'required|numeric',
+            'kode_un' => 'required|numeric',
+            'alamat' => 'required|min:5|max:60',
+            'no_hp' => 'required|min:5|max:20',
+            'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
+            'tgl_pendirian' => 'required',
+            'website' => 'required|min:5|max:40',
+            'email' => 'required|email|min:5|max:40|url',
+            'facebook' => 'required|min:5|max:40',
+            'twitter' => 'required|max:40',
+            'instagram' => 'required|max:40',
+            'maps' => 'required|url'
+        ], $messages);
+
         $profilesekolah = new ProfileSekolah;
+
+        $logo = $request->file('logo');
+        $filename = time() .'.'. $logo->getClientOriginalExtension();
+        Image::make($logo)->resize(400, 400)->save( public_path('/image/profile_sekolah/logo/' .$filename));
+        
+        $profilesekolah->logo = $filename;
         $profilesekolah->nama = $request->nama;
         $profilesekolah->npsn = $request->npsn;
-        $profilesekolah->kode_un = $request->kode_un;
         $profilesekolah->nis = $request->nis;
-        $profilesekolah->website = $request->website;
-        $profilesekolah->email = $request->email;
+        $profilesekolah->kode_un = $request->kode_un;
+        $profilesekolah->alamat = $request->alamat;
+        $profilesekolah->no_hp = $request->no_hp;
         $profilesekolah->no_sk_pendirian_sekolah = $request->no_sk_pendirian_sekolah;
         $profilesekolah->tgl_pendirian = $request->tgl_pendirian;
+        $profilesekolah->website = $request->website;
+        $profilesekolah->email = $request->email;
+        $profilesekolah->facebook = $request->facebook;
+        $profilesekolah->twitter = $request->twitter;
+        $profilesekolah->instagram = $request->instagram;
+        $profilesekolah->maps = $request->maps;
         $profilesekolah->save();
 
         return redirect()->route('profilesekolah');
@@ -69,7 +112,8 @@ class ProfileSekolahController extends Controller
      */
     public function show($id)
     {
-        //
+        $profilesekolah = ProfileSekolah::find($id);
+        return view('admin.profilesekolah.show', compact('profilesekolah'));
     }
 
     /**
@@ -81,7 +125,7 @@ class ProfileSekolahController extends Controller
     public function edit($id)
     {
         $profilesekolah = ProfileSekolah::find($id);
-        return view('admin.profilesekolah.update', ['profilesekolah' => $profilesekolah]); 
+        return view('admin.profilesekolah.update', compact('profilesekolah')); 
     }
 
     /**
@@ -93,17 +137,58 @@ class ProfileSekolahController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $messages = [
+            'required' => 'Form Ini Harus Diisi.',
+            'min' => 'Form ini harus diisi minimal 4 karakter.',
+            'max' => 'form ini harus diisi maksimal 200 karakter',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'numeric' => 'Form ini Harus diisi oleh angka.',
+            'alpha' => 'Form ini harus diisi oleh teks.',
+            'email' => 'Anda Memasukan Alamat email yang tidak benar.'
+        ];
+
+        $this->validate($request, [
+            'logo' => 'required|mimes:jpeg,jpg,png|max:2000',
+            'nama' => 'required|min:7|max:40',
+            'npsn' => 'required|numeric',
+            'nis' => 'required|numeric',
+            'kode_un' => 'required|numeric',
+            'alamat' => 'required|min:5|max:60',
+            'no_hp' => 'required|min:5|max:20',
+            'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
+            'tgl_pendirian' => 'required',
+            'website' => 'required|min:5|max:40',
+            'email' => 'required|email|min:5|max:40',
+            'facebook' => 'required|min:5|max:40',
+            'twitter' => 'required|max:40',
+            'instagram' => 'required|max:40',
+            'maps' => 'required'
+        ], $messages);
+
         $profilesekolah = ProfileSekolah::find($id);
+
+        $logo = $request->file('logo');
+        $filename = time() .'.'. $logo->getClientOriginalExtension();
+        Image::make($logo)->resize(400, 400)->save( public_path('/image/profile_sekolah/logo/' .$filename));
+
+         $profilesekolah->logo = $filename;
         $profilesekolah->nama = $request->nama;
         $profilesekolah->npsn = $request->npsn;
-        $profilesekolah->kode_un = $request->kode_un;
         $profilesekolah->nis = $request->nis;
-        $profilesekolah->website = $request->website;
-        $profilesekolah->email = $request->email;
+        $profilesekolah->kode_un = $request->kode_un;
+        $profilesekolah->alamat = $request->alamat;
+        $profilesekolah->no_hp = $request->no_hp;
         $profilesekolah->no_sk_pendirian_sekolah = $request->no_sk_pendirian_sekolah;
         $profilesekolah->tgl_pendirian = $request->tgl_pendirian;
+        $profilesekolah->website = $request->website;
+        $profilesekolah->email = $request->email;
+        $profilesekolah->facebook = $request->facebook;
+        $profilesekolah->twitter = $request->twitter;
+        $profilesekolah->instagram = $request->instagram;
+        $profilesekolah->maps = $request->maps;
         $profilesekolah->save();
-        return redirect('profilesekolah');
+        return redirect()->route('profilesekolah');
     }
 
     /**

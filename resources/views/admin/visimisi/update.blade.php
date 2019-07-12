@@ -9,20 +9,25 @@ Ubah Data Visi dan Misi
 @stop
 
 @section('content')
-		<div class="card col-md-5">
-			<form action="/visimisi/{{ $visimisi->id }}" method="POST">
-				{{ csrf_field() }}
-				{{ method_field('PUT') }}
-				<input type="hidden" name="id" value="{{ $visimisi->id }}">
+			<form action="{{ route('visimisi.post',$visimisi->id) }}" method="POST">
+				@csrf
 				<div class="form-group">
 					<label for="visi">Visi</label>
-					<textarea name="visi" id="visi" cols="95" rows="3">{{ $visimisi->visi }}</textarea>
+					<textarea name="visi" class="form-control" id="visi">{{ $visimisi->visi }}</textarea>
+					@error('visi')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 				<div class="form-group">
 					<label for="misi">Misi</label>
-					<textarea name="misi" id="misi" cols="95" rows="3">{{ $visimisi->misi }}</textarea>
+					<textarea name="misi" id="misi" class="form-control">{{ $visimisi->misi }}</textarea>
+					@error('misi')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
-				<button type="submit" class="btn btn-info col-md-12 col-md-offset-3">Ubah Data</button>
+				<div class="form-group">
+					<a href="{{ route('visimisi') }}" class="btn btn-warning">Kembali</a>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
 			</form>
-		</div>
 @stop
