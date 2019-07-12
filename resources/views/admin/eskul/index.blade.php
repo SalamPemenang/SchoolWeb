@@ -9,15 +9,15 @@
 @stop
 
 @section('content')
-	<a href="{{ route('eskul.tambah') }}" class="btn btn-sm btn-primary">Tambah Eskul</a><br><br>
+	<a href="{{ route('eskul.tambah') }}" class="btn btn-primary">Tambah Eskul</a><br><br>
 	<table id="eskul">
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>nama</th>
-				<th>pembimbing</th>
-				<th>jadwal</th>
-				<th>action</th>
+				<th>No</th>
+				<th>Nama</th>
+				<th>Pembimbing</th>
+				<th>Jadwal</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 	</table>
@@ -26,13 +26,13 @@
 	<script>
 		$(function() {
 			$('#eskul').DataTable({
-				order: [[0, 'desc']],
+				order: [[0, 'asc']],
 				processing: true,
 				responsive: true,
 				serverSide: true,
 				ajax: '{!! route('eskul.data') !!}',
 				columns: [
-				{data: 'id', name: 'id', width: '10px', orderable: true},
+				{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '10px', orderable: true},
 				{data: 'nama', name: 'nama', width: '20px', orderable: true},
 				{data: 'pembimbing', name: 'pembimbing', width: '30px', orderable: true},
 				{data: 'jadwal', name: 'jadwal', width: '20px', orderable: true},

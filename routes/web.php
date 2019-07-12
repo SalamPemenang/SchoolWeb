@@ -162,18 +162,20 @@ Route::prefix('galeri')->group( function() {{
 }});
 
 
-//Profile Sekolah di halaman admin
+//Profile Sekolah di halaman admin url diganti jadi tentangsekolah
 //Halaman Admin : Profile Sekolah
-Route::prefix('profilesekolah')->group(function() {
+Route::prefix('tentangsekolah')->group(function() {
 	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah')->middleware('verified');
 	//Datatables
 	Route::get('/data', 'Admin\ProfileSekolahController@profileDatatables')->name('profilesekolah.data')->middleware('verified');
 	//Tambah Data
 	Route::get('/tambah', 'Admin\ProfileSekolahController@create')->name('profilesekolah.tambah')->middleware('verified');
 	Route::post('/add', 'Admin\ProfileSekolahController@store')->name('profilesekolah.add')->middleware('verified');
+	//Lihat Data
+	Route::get('/lihat/{id}', 'Admin\ProfileSekolahController@show')->name('profilesekolah.lihat')->middleware('verified');
 	//ubah Profile 
 	Route::get('/{id}/edit', 'Admin\ProfileSekolahController@edit')->name('profilesekolah.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post')->middleware('verified');
+	Route::post('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post')->middleware('verified');
 	//Hapus Data
 	Route::delete('/{id}', 'Admin\ProfileSekolahController@destroy')->name('profilesekolah.hapus')->middleware('verified');
 });
@@ -188,7 +190,7 @@ Route::prefix('visimisi')->group(function() {
 	Route::post('/post', 'Admin\VisiMisiController@store')->name('visimisi.add');
 	//ubah data 
 	Route::get('/{id}/edit', 'Admin\VisiMisiController@edit')->name('visimisi.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
+	Route::post('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
 	//hapus data 
 	Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus')->middleware('verified');
 });
@@ -204,7 +206,7 @@ Route::prefix('eskul')->group( function() {
 	Route::post('/post', 'Admin\EskulController@store')->name('eskul.post')->middleware('verified');
 	//ubah data 
 	Route::get('/edit/{id}', 'Admin\EskulController@edit')->name('eskul.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\EskulController@update')->name('eskul.update')->middleware('verified');
+	Route::post('/{id}', 'Admin\EskulController@update')->name('eskul.update')->middleware('verified');
 	//delete data 
 	Route::delete('/{id}', 'Admin\EskulController@destroy')->name('eskul.hapus')->middleware('verified');
 });
@@ -224,4 +226,24 @@ Route::prefix('struktur-organisasi')->group( function() {
 	Route::post('/{id}', 'Admin\StrukturOrganisasiController@update')->name('struktur.update')->middleware('verified');
 	//Hapus Data 
 	Route::delete('/{id}', 'Admin\StrukturOrganisasiController@destroy')->name('struktur.hapus')->middleware('verified');
+});
+
+// Halaman Admin: pengumuman
+Route::prefix('pengumuman')->group(function(){
+	Route::get('/', 'Admin\pengumumanController@index')->name('pengumuman')->middleware('verified');
+	Route::get('/data', 'Admin\pengumumanController@pengumumanDatatables')->name('pengumuman.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\pengumumanController@create')->name('pengumuman.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\pengumumanController@store')->name('pengumuman.post')->middleware('verified');
+	Route::get('/{id}/edit', 'Admin\pengumumanController@edit')->name('pengumuman.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\pengumumanController@destroy')->name('pengumuman.delete')->middleware('verified');
+});
+
+// Halaman Admin: berita
+Route::prefix('berita')->group(function(){
+	Route::get('/', 'Admin\beritaController@index')->name('berita')->middleware('verified');
+	Route::get('/data', 'Admin\beritaController@beritaDatatables')->name('berita.data')->middleware('verified');
+	Route::get('/tambah', 'Admin\beritaController@create')->name('berita.tambah')->middleware('verified');
+	Route::post('/post', 'Admin\beritaController@store')->name('berita.post')->middleware('verified');
+	Route::get('/{id}/edit', 'Admin\beritaController@edit')->name('berita.edit')->middleware('verified');
+	Route::delete('/{id}/hapus', 'Admin\beritaController@destroy')->name('berita.delete')->middleware('verified');
 });

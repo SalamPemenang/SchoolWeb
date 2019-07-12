@@ -10,23 +10,24 @@ Tambah Guru
 
 	<div class="form-group">
 		<label for="nuptk">NUPTK *</label>
-		<input type="text" name="nuptk" id="nuptk" class="form-control" autocomplete="off" required="" maxlength="15">
+		<input type="text" name="nuptk" id="nuptk" class="form-control" autocomplete="off" maxlength="16">
 	</div>
 
 	<div class="form-group">
 		<label for="nip">NIP *</label>
-		<input type="text" name="nip" id="nip" class="form-control" autocomplete="off" required="" maxlength="15">
+		<input type="text" name="nip" id="nip" class="form-control" autocomplete="off" maxlength="18">
 	</div>
 
 	<div class="form-group">
 		<label for="nama">Nama *</label>
-		<input type="text" name="nama" id="nama" class="form-control" autocomplete="off" required="" maxlength="50">
+		<input type="text" name="nama" id="nama" class="form-control" autocomplete="off"  maxlength="50">
 	</div>
 
 	<div class="form-group">
 		<label for="jk">Jenis Kelamin *</label>
 		<input type="radio" name="jk" id="jk" value="L">L
 		<input type="radio" name="jk" id="jk" value="P">P
+		<br>
 	</div>
 
 	<div class="form-group">
@@ -36,12 +37,12 @@ Tambah Guru
 
 	<div class="form-group">
 		<label for="tmpt_lahir">Tempat lahir *</label>
-		<input type="text" name="tmpt_lahir" id="tmpt_lahir" autocomplete="off" class="form-control" required="" maxlength="50">
+		<input type="text" name="tmpt_lahir" id="tmpt_lahir" autocomplete="off" class="form-control" maxlength="50">
 	</div>
 
 	<div class="form-group">
 		<label for="alamat">Alamat *</label>
-		<textarea name="alamat" id="alamat" cols="30" rows="3" class="form-control" required="" maxlength="50"></textarea>
+		<textarea name="alamat" id="alamat" cols="30" rows="3" class="form-control" maxlength="50"></textarea>
 	</div>
 
 	<div class="form-group">
