@@ -46,6 +46,22 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'required' => 'Form ini harus di isi!',
+            'min' => 'Form ini harus di isi minimal 8 karakter!',
+            'max' => 'Form ini harus di isi maksimal 50 karakter!',
+            'numeric' => 'Form ini harus di isi oleh angka!'
+        ];
+
+        $this->validate($request, [
+            'nuptk' => 'required|numeric',
+            'nip' => 'required|numeric',
+            'nama' => 'required|min:3|max:50',
+            'jk' => 'required|max:50',
+            'tgl_lahir' => 'required|date',
+            'tmpt_lahir' => 'required|max:50',
+            'alamat' => 'required|min:8',
+        ], $messages);
 
         $id = $request->get('id');
         if ($id) {
