@@ -162,9 +162,9 @@ Route::prefix('galeri')->group( function() {{
 }});
 
 
-//Profile Sekolah di halaman admin
+//Profile Sekolah di halaman admin url diganti jadi tentangsekolah
 //Halaman Admin : Profile Sekolah
-Route::prefix('tentangesekolah')->group(function() {
+Route::prefix('tentangsekolah')->group(function() {
 	Route::get('/', 'Admin\ProfileSekolahController@index')->name('profilesekolah')->middleware('verified');
 	//Datatables
 	Route::get('/data', 'Admin\ProfileSekolahController@profileDatatables')->name('profilesekolah.data')->middleware('verified');
