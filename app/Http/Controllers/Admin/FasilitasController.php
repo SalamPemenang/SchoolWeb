@@ -32,6 +32,15 @@ class FasilitasController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$fasilitas = new Fasilitas;
     	$fasilitas->id_category_fasilitas = $request->kategori;
 
@@ -56,6 +65,16 @@ class FasilitasController extends Controller
 
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
+        
     	$fasilitas = Fasilitas::find($id);
     	$fasilitas->id_category_fasilitas = $request->kategori;
 
