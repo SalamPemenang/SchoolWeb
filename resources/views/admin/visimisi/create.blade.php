@@ -14,13 +14,20 @@
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="visi">Visi*</label>
-					<textarea name="visi" maxlength="190" id="visi" cols="95" rows="3"></textarea>
+					<textarea name="visi" id="visi" cols="95" rows="3"></textarea>
+					@error('visi')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 				<div class="form-group">
 					<label for="misi">Misi*</label>
-					<textarea name="misi" maxlength="190" id="misi" cols="95" rows="3"></textarea>
+					<textarea name="misi" id="misi" cols="95" rows="3"></textarea>
+					@error('misi')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
-				<button type="submit" class="btn btn-info col-md-12 col-md-offset-3">Simpan</button>
+				<a href="{{ route('visimisi') }}" class="btn btn-warning">Kembali</a>
+				<button type="submit" class="btn btn-primary" title="Simpan data">Simpan</button>
 			</form>
 		</div>
 @stop

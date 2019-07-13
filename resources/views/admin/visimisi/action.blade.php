@@ -1,8 +1,12 @@
 <form action="{{ route('visimisi.hapus', $id) }}" method="post">
 	@csrf
-	<a href="{{ route('visimisi.edit', $id) }}">Ubah</a> ||
+	<a href="{{ route('visimisi.edit', $id) }}" class="btn btn-success" title="Ubah Data">
+		<i class="fa fa-pencil"></i>
+	</a> ||
 	<span onclick="return confirm('Yakin?')">
-		<button class="btn btn-danger">Hapus</button>
+		<button class="btn btn-danger" title="Hapus Data">
+			<i class="fa fa-trash"></i>
+		</button>
 	</span>
 	<input type="hidden" name="_method" value="DELETE">
 </form>
