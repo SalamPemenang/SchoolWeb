@@ -32,6 +32,18 @@ class PrestasiController extends Controller
 
     public function store(Request $request)
     {
+        $messages = [
+            'required' => 'Form ini harus di isi!',
+            'max' => 'Form ini harus di isi maksimal 50 karakter!'
+        ];
+
+        $this->validate($request, [
+            'nama' => 'required|max:50',
+            'juara_ke' => 'required|max:50',
+            'tingkat' => 'required|max:50',
+            'peserta' => 'required|max:50',
+        ], $messages);
+
     	$prestasi = new Prestasi;
 
         $prestasi->nama = $request->nama;
@@ -52,6 +64,18 @@ class PrestasiController extends Controller
 
     public function update(Request $request, $id)
     {
+        $messages = [
+            'required' => 'Form ini harus di isi!',
+            'max' => 'Form ini harus di isi maksimal 50 karakter!'
+        ];
+
+        $this->validate($request, [
+            'nama' => 'required|max:50',
+            'juara_ke' => 'required|max:50',
+            'tingkat' => 'required|max:50',
+            'peserta' => 'required|max:50',
+        ], $messages);
+        
     	$prestasi = Prestasi::find($id);
 
         $prestasi->nama = $request->nama;

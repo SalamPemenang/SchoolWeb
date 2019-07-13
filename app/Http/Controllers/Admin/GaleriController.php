@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Gallery;
+use App\CategoryGaleri;
 use Image;
 
 class GaleriController extends Controller
@@ -12,7 +13,8 @@ class GaleriController extends Controller
     public function index()
     {
     	$galeries = Gallery::all();
-    	return view('admin.galeri.index', compact('galeries'));
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.index', compact('galeries', 'categories'));
     }
 
     public function manage()
@@ -24,14 +26,24 @@ class GaleriController extends Controller
 
     public function create()
     {
-    	return view('admin.galeri.add');
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.add', compact('categories'));
     }
 
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = new Gallery;
-    	$galeri->kategori = $request->kategori;
+    	$galeri->id_category_galeri = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();
@@ -48,14 +60,24 @@ class GaleriController extends Controller
     public function edit($id)
     {
     	$galeri = Gallery::find($id);
-    	return view('admin.galeri.edit', compact('galeri'));
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.edit', compact('galeri', 'categories'));
     }
 
 
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = Gallery::find($id);
-    	$galeri->kategori = $request->kategori;
+    	$galeri->id_category_galeri = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();

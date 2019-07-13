@@ -49,12 +49,11 @@ class VisiMisiController extends Controller
 
         $message = [
             'required' => 'Form ini harus diisi.',
-            'max' => 'Form ini harus diisi maksimal 190 karakter.'
         ];
 
         $this->validate($request, [
-            'visi' => 'required|max:190',
-            'misi' => 'required|max:190'
+            'visi' => 'required',
+            'misi' => 'required'
         ], $message);
         
         $visimisi = new VisiMisi;
@@ -99,12 +98,11 @@ class VisiMisiController extends Controller
     {
         $message = [
             'required' => 'Form ini harus diisi.',
-            'max' => 'Form ini harus diisi maksimal 190 karakter.'
         ];
 
         $this->validate($request, [
-            'visi' => 'required|max:190',
-            'misi' => 'required|max:190'
+            'visi' => 'required',
+            'misi' => 'required'
         ], $message);
         
         $visimisi = VisiMisi::find($id);

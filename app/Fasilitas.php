@@ -12,6 +12,11 @@ class Fasilitas extends Model
 
     protected $fillable = [
     	'foto',
-    	'kategori',
+    	'id_category_fasilitas',
     ];
+
+    public function categoryFasilitas()
+    {
+    	return $this->belongsTo(CategoryFasilitas::class);
+    }
 }
