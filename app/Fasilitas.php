@@ -12,6 +12,6 @@ class Fasilitas extends Model
 
     protected $fillable = [
     	'foto',
-    	'kategori',
+    	'id_category_fasilitas',
     ];
 }
