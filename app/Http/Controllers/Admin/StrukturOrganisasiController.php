@@ -51,11 +51,11 @@ class StrukturOrganisasiController extends Controller
         $message = [
             'required' => 'Form ini harus diisi.',
             'mimes' => 'Format Harus .jpg, .jpeg atau .png.',
-            'max' => 'Ukuran Foto maksimal 2mb'
+            'max' => 'Ukuran Foto maksimal 1mb'
         ];
 
         $this->validate($request, [
-            'foto' => 'required|mimes:jpeg,jpg,png|max: 2000'
+            'foto' => 'required|mimes:jpeg,jpg,png|max: 1000'
         ], $message);
 
         $struktur = new StrukturOrganisasi;
@@ -105,11 +105,11 @@ class StrukturOrganisasiController extends Controller
         $message = [
             'required' => 'Form ini harus diisi.',
             'mimes' => 'Format Harus .jpg, .jpeg atau .png.',
-            'max' => 'Ukuran Foto maksimal 2mb'
+            'max' => 'Ukuran Foto maksimal 1mb'
         ];
 
         $this->validate($request, [
-            'foto' => 'required|mimes:jpeg,jpg,png|max: 2000'
+            'foto' => 'required|mimes:jpeg,jpg,png|max: 1000'
         ], $message);
         
         $struktur = StrukturOrganisasi::find($id);

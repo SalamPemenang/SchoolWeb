@@ -26,6 +26,18 @@ class PengumumanController extends Controller
     }
      public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form Ini Harus Diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.',
+            'date' => 'Format Tanggal yang anda masukan salah.'
+        ];
+        $this->validate($request, [
+            'judul' => 'required',
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'tgl' => 'required|date',
+            'deskripsi' => 'required'
+        ], $message);
         $id = $request->get('id');
         
         if ($id) {
