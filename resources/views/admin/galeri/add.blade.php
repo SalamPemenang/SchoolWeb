@@ -13,7 +13,10 @@ Halaman Galleri
 
 				<div class="form-group">
 					<label for="up">Upload Gambar :</label>
-					<input type="file" name="foto" class="form-control" id="up" required="">
+					<input type="file" name="foto" class="form-control" id="up">
+					@error('foto')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">

@@ -51,30 +51,30 @@ class ProfileSekolahController extends Controller
 
         $messages = [
             'required' => 'Form Ini Harus Diisi.',
-            'min' => 'Form ini harus diisi minimal 4 karakter.',
-            'max' => 'form ini harus diisi maksimal 200 karakter',
+            'max' => 'Ukuran Foto Maksimal 1mb.',
             'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
             'numeric' => 'Form ini Harus diisi oleh angka.',
             'alpha' => 'Form ini harus diisi oleh teks.',
             'email' => 'Anda Memasukan Alamat email tidak benar.',
-            'url' => 'Silahkan Masukan Alamat URL yang benar.'
+            'url' => 'Silahkan Masukan Alamat URL yang benar.',
+            'date' => 'Format Tanggal yang anda masukan salah.'
         ];
 
         $this->validate($request, [
-            'logo' => 'required|mimes:jpeg,jpg,png|max:2000',
-            'nama' => 'required|min:7|max:40',
+            'logo' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'nama' => 'required',
             'npsn' => 'required|numeric',
             'nis' => 'required|numeric',
             'kode_un' => 'required|numeric',
-            'alamat' => 'required|min:5|max:60',
-            'no_hp' => 'required|min:5|max:20',
-            'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
-            'tgl_pendirian' => 'required',
-            'website' => 'required|min:5|max:40',
-            'email' => 'required|email|min:5|max:40|url',
-            'facebook' => 'required|min:5|max:40',
-            'twitter' => 'required|max:40',
-            'instagram' => 'required|max:40',
+            'alamat' => 'required',
+            'no_hp' => 'required',
+            'no_sk_pendirian_sekolah' => 'required',
+            'tgl_pendirian' => 'required|date',
+            'website' => 'required|url',
+            'email' => 'required|email',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'instagram' => 'required',
             'maps' => 'required|url'
         ], $messages);
 
@@ -140,32 +140,32 @@ class ProfileSekolahController extends Controller
 
         $messages = [
             'required' => 'Form Ini Harus Diisi.',
-            'min' => 'Form ini harus diisi minimal 4 karakter.',
-            'max' => 'form ini harus diisi maksimal 200 karakter',
+            'max' => 'Ukuran Foto Maksimal 1mb.',
             'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
             'numeric' => 'Form ini Harus diisi oleh angka.',
             'alpha' => 'Form ini harus diisi oleh teks.',
-            'email' => 'Anda Memasukan Alamat email yang tidak benar.'
+            'email' => 'Anda Memasukan Alamat email tidak benar.',
+            'url' => 'Silahkan Masukan Alamat URL yang benar.',
+            'date' => 'Format Tanggal yang anda masukan salah.'
         ];
 
         $this->validate($request, [
-            'logo' => 'required|mimes:jpeg,jpg,png|max:2000',
-            'nama' => 'required|min:7|max:40',
+            'logo' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'nama' => 'required',
             'npsn' => 'required|numeric',
             'nis' => 'required|numeric',
             'kode_un' => 'required|numeric',
-            'alamat' => 'required|min:5|max:60',
-            'no_hp' => 'required|min:5|max:20',
-            'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
-            'tgl_pendirian' => 'required',
-            'website' => 'required|min:5|max:40',
-            'email' => 'required|email|min:5|max:40',
-            'facebook' => 'required|min:5|max:40',
-            'twitter' => 'required|max:40',
-            'instagram' => 'required|max:40',
-            'maps' => 'required'
+            'alamat' => 'required',
+            'no_hp' => 'required',
+            'no_sk_pendirian_sekolah' => 'required',
+            'tgl_pendirian' => 'required|date',
+            'website' => 'required|url',
+            'email' => 'required|email',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'instagram' => 'required',
+            'maps' => 'required|url'
         ], $messages);
-
         $profilesekolah = ProfileSekolah::find($id);
 
         $logo = $request->file('logo');

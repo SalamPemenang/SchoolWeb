@@ -15,16 +15,25 @@ Halaman Link
 				@csrf
 
 				<div class="form-group">
-					<input type="text" name="nama" class="form-control" required="" maxlength="50" placeholder="Masukan Nama Website Disini">
+					<input type="text" name="nama" class="form-control" maxlength="50" value="{{ old('nama') }}" placeholder="Masukan Nama Website Disini">
+					@error('nama')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
-					<input type="text" name="link" class="form-control" required="" maxlength="190" placeholder="Masukan Link Disini">
+					<input type="text" name="link" class="form-control" maxlength="190" value="{{ old('link') }}" placeholder="Masukan Link Disini">
+					@error('link')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
 					<span>Silahkan Pilih Gambar</span>
-					<input type="file" name="foto" class="form-control" required="">
+					<input type="file" name="foto" class="form-control" value="{{ old('foto') }}">
+					@error('foto')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
