@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Fasilitas
+Tambah Fasilitas
 @stop
 
 @section('content')

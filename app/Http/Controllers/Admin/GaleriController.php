@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Gallery;
+use App\CategoryGaleri;
 use Image;
 
 class GaleriController extends Controller
@@ -12,7 +13,8 @@ class GaleriController extends Controller
     public function index()
     {
     	$galeries = Gallery::all();
-    	return view('admin.galeri.index', compact('galeries'));
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.index', compact('galeries', 'categories'));
     }
 
     public function manage()
@@ -40,7 +42,7 @@ class GaleriController extends Controller
             'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
         ], $message);
     	$galeri = new Gallery;
-    	$galeri->kategori = $request->kategori;
+    	$galeri->id_category_galeri = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();
@@ -73,7 +75,7 @@ class GaleriController extends Controller
             'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
         ], $message);
     	$galeri = Gallery::find($id);
-    	$galeri->kategori = $request->kategori;
+    	$galeri->id_category_galeri = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();

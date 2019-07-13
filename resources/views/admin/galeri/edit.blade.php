@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Galeri
+Edit Galeri
 @stop
 
 @section('content')

@@ -10,13 +10,13 @@ Halaman Fasilitas
 	<br><br>
 	
 	<div class="row">
-		{{-- @foreach( $categories as $category )
-		<div class="col-sm-2">
-			<a href="{{ route('gallery.show', $category->id) }}" class="btn btn-sm btn-outline-success">{{ $category->category }}</a>
+		@foreach( $categories as $category )
+		<div class="col-sm-3">
+			<a href="" class="btn btn-sm btn-default">{{ $category->nama }}</a>
 		</div>
-		<br><br>
-		@endforeach --}}
+		@endforeach
 	</div>
+	<br><br>
 
 	<div class="row">
 		@foreach( $fasilitations as $fasilitas )

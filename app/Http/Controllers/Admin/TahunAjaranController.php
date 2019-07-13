@@ -46,6 +46,16 @@ class TahunAjaranController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'required' => 'Form ini harus di isi!',
+            'max' => 'Form ini harus di isi maksimal 9 Karakter!'
+        ];
+
+        $this->validate($request, [
+            'tahun_ajaran' => 'required|max:9'
+        ], $messages);
+
+
         $id = $request->get('id');
         if ($id) {
             $tahun = TahunAjaran::findOrFail($id);
