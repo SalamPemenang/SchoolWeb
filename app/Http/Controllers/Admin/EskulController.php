@@ -46,12 +46,11 @@ class EskulController extends Controller
     {
         $message = [
             'required' => 'Form ini harus diisi.',
-            'max' => 'Maksimal form ini diisi 50 karakter.',
             'alpha' => 'Form ini hanya bisi diisi oleh Teks.'
         ];
         $this->validate($request, [
-            'nama' => 'required|alpha|max:50',
-            'pembimbing' => 'required|alpha|max:50',
+            'nama' => 'required|alpha',
+            'pembimbing' => 'required|alpha',
             'jadwal' => 'required'
         ], $message);
 
@@ -98,12 +97,11 @@ class EskulController extends Controller
     {
          $message = [
             'required' => 'Form ini harus diisi.',
-            'max' => 'Maksimal form ini diisi 50 karakter.',
             'alpha' => 'Form ini hanya bisi diisi oleh Teks.'
         ];
         $this->validate($request, [
-            'nama' => 'required|alpha|max:50',
-            'pembimbing' => 'required|alpha|max:50',
+            'nama' => 'required|alpha',
+            'pembimbing' => 'required|alpha',
             'jadwal' => 'required'
         ], $message);
         

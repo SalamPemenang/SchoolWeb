@@ -26,6 +26,18 @@ class BeritaController extends Controller
     }
      public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'date' => 'Format Tanggal yang anda masukan salah.',
+            'mimes' => 'Format Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 1mb'
+        ];
+        $this->validate($request, [
+            'judul' => 'required',
+            'tgl' => 'required|date',
+            'deskripsi' => 'required',
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
         $id = $request->get('id');
         
         if ($id) {
