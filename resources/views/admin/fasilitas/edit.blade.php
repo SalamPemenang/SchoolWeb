@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Fasilitas
+Ubah Fasilitas
 @stop
 
 @section('content')
@@ -20,9 +20,10 @@ Halaman Fasilitas
 
 				<div class="form-group">
 					<select name="kategori" class="form-control">
-						<option value="">{{ $fasilitas->kategori }}</option>
-						<option value="">Kantin</option>
-						<option value="">Perpustakaan</option>
+						<option value="{{ $fasilitas->id_category_fasilitas }}">{{ $fasilitas->id_category_fasilitas }}</option>
+						@foreach( $categories as $category )
+							<option value="{{ $category->id }}">{{ $category->nama }}</option>
+						@endforeach
 					</select>
 				</div>
 

@@ -12,6 +12,13 @@ class Gallery extends Model
 
     protected $fillable = [
     	'foto',
-    	'kategori',
+    	'video',
+    	'id_category_galeri',
     ];
+
+
+    public function categoryGallery()
+    {
+    	return $this->belongsTo(CategoryGallery::class);
+    }
 }

@@ -1,22 +1,21 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Fasilitas
+Halaman Galeri
 @stop
 
 @section('content')
-	<a href="{{ route('galeri.add') }}" class="btn btn-sm btn-primary">Tambah Data</a>
 	<a href="{{ route('galeri.manage') }}" class="btn btn-sm btn-success">Kelola Data</a>
 	<br><br>
 	
 	<div class="row">
-		{{-- @foreach( $categories as $category )
+		@foreach( $categories as $category )
 		<div class="col-sm-2">
-			<a href="{{ route('gallery.show', $category->id) }}" class="btn btn-sm btn-outline-success">{{ $category->category }}</a>
+			<a href="" class="btn btn-sm btn-default">{{ $category->nama }}</a>
 		</div>
-		<br><br>
-		@endforeach --}}
+		@endforeach
 	</div>
+	<br><br>
 
 	<div class="row">
 		@foreach( $galeries as $galeri )

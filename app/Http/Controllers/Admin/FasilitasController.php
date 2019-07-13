@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Fasilitas;
+use App\CategoryFasilitas;
 use Image;
 
 class FasilitasController extends Controller
@@ -12,7 +13,8 @@ class FasilitasController extends Controller
     public function index()
     {
     	$fasilitations = Fasilitas::all();
-    	return view('admin.fasilitas.index', compact('fasilitations'));
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.index', compact('fasilitations', 'categories'));
     }
 
     public function manage()
@@ -24,14 +26,15 @@ class FasilitasController extends Controller
 
     public function create()
     {
-    	return view('admin.fasilitas.add');
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.add', compact('categories'));
     }
 
 
     public function store(Request $request)
     {
     	$fasilitas = new Fasilitas;
-    	$fasilitas->kategori = $request->kategori;
+    	$fasilitas->id_category_fasilitas = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();
@@ -48,14 +51,15 @@ class FasilitasController extends Controller
     public function edit($id)
     {
     	$fasilitas = Fasilitas::find($id);
-    	return view('admin.fasilitas.edit', compact('fasilitas'));
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.edit', compact('fasilitas', 'categories'));
     }
 
 
     public function update(Request $request, $id)
     {
     	$fasilitas = Fasilitas::find($id);
-    	$fasilitas->kategori = $request->kategori;
+    	$fasilitas->id_category_fasilitas = $request->kategori;
 
     	$foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();

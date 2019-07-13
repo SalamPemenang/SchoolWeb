@@ -142,6 +142,17 @@ Route::prefix('fasilitas')->group( function() {{
 	Route::post('/post/{id}', 'Admin\FasilitasController@update')->name('fasilitas.update')->middleware('verified');
 	// Hapus Data
 	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete')->middleware('verified');
+
+	// Route KategoriFasilitas
+	Route::get('/kategori', 'Admin\CategoryFasilitasController@index')->name('GF')->middleware('verified');
+	// Tambah Data
+	Route::get('/kategori/tambah', 'Admin\CategoryFasilitasController@create')->name('GF.add')->middleware('verified');
+	Route::post('/kategori/post', 'Admin\CategoryFasilitasController@store')->name('GF.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/kategori/edit/{id}', 'Admin\CategoryFasilitasController@edit')->name('GF.edit')->middleware('verified');
+	Route::post('/kategori/post/{id}', 'Admin\CategoryFasilitasController@update')->name('GF.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('kategori/delete/{id}', 'Admin\CategoryFasilitasController@destroy')->name('GF.delete')->middleware('verified');
 }});
 
 
@@ -159,6 +170,17 @@ Route::prefix('galeri')->group( function() {{
 	Route::post('/post/{id}', 'Admin\GaleriController@update')->name('galeri.update')->middleware('verified');
 	// Hapus Data
 	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete')->middleware('verified');
+
+	// Route KategoriGaleri
+	Route::get('/kategori', 'Admin\CategoryGalleryController@index')->name('GK')->middleware('verified');
+	// Tambah Data
+	Route::get('/kategori/tambah', 'Admin\CategoryGalleryController@create')->name('GK.add')->middleware('verified');
+	Route::post('/kategori/post', 'Admin\CategoryGalleryController@store')->name('GK.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/kategori/edit/{id}', 'Admin\CategoryGalleryController@edit')->name('GK.edit')->middleware('verified');
+	Route::post('/kategori/post/{id}', 'Admin\CategoryGalleryController@update')->name('GK.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('kategori/delete/{id}', 'Admin\CategoryGalleryController@destroy')->name('GK.delete')->middleware('verified');
 }});
 
 
@@ -171,9 +193,11 @@ Route::prefix('tentangsekolah')->group(function() {
 	//Tambah Data
 	Route::get('/tambah', 'Admin\ProfileSekolahController@create')->name('profilesekolah.tambah')->middleware('verified');
 	Route::post('/add', 'Admin\ProfileSekolahController@store')->name('profilesekolah.add')->middleware('verified');
+	//Lihat Data
+	Route::get('/lihat/{id}', 'Admin\ProfileSekolahController@show')->name('profilesekolah.lihat')->middleware('verified');
 	//ubah Profile 
 	Route::get('/{id}/edit', 'Admin\ProfileSekolahController@edit')->name('profilesekolah.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post')->middleware('verified');
+	Route::post('/{id}', 'Admin\ProfileSekolahController@update')->name('profilesekolah.post')->middleware('verified');
 	//Hapus Data
 	Route::delete('/{id}', 'Admin\ProfileSekolahController@destroy')->name('profilesekolah.hapus')->middleware('verified');
 });
@@ -188,7 +212,7 @@ Route::prefix('visimisi')->group(function() {
 	Route::post('/post', 'Admin\VisiMisiController@store')->name('visimisi.add');
 	//ubah data 
 	Route::get('/{id}/edit', 'Admin\VisiMisiController@edit')->name('visimisi.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
+	Route::post('/{id}', 'Admin\VisiMisiController@update')->name('visimisi.post');
 	//hapus data 
 	Route::delete('/{id}', 'Admin\VisiMisiController@destroy')->name('visimisi.hapus')->middleware('verified');
 });
@@ -204,7 +228,7 @@ Route::prefix('eskul')->group( function() {
 	Route::post('/post', 'Admin\EskulController@store')->name('eskul.post')->middleware('verified');
 	//ubah data 
 	Route::get('/edit/{id}', 'Admin\EskulController@edit')->name('eskul.edit')->middleware('verified');
-	Route::put('/{id}', 'Admin\EskulController@update')->name('eskul.update')->middleware('verified');
+	Route::post('/{id}', 'Admin\EskulController@update')->name('eskul.update')->middleware('verified');
 	//delete data 
 	Route::delete('/{id}', 'Admin\EskulController@destroy')->name('eskul.hapus')->middleware('verified');
 });
