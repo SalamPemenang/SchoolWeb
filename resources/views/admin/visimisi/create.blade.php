@@ -14,14 +14,14 @@
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="visi">Visi*</label>
-					<textarea name="visi" id="visi" cols="95" rows="3"></textarea>
+					<textarea name="visi" id="visi" minlength="20" maxlength="190" cols="95" rows="3">{{ old('visi') }}</textarea>
 					@error('visi')
 						<span class="invalid-feedback text-danger">{{ $message }}</span>
 					@enderror
 				</div>
 				<div class="form-group">
 					<label for="misi">Misi*</label>
-					<textarea name="misi" id="misi" cols="95" rows="3"></textarea>
+					<textarea name="misi" id="misi" minlength="20" maxlength="190" cols="95" rows="3">{{ old('misi') }}</textarea>
 					@error('misi')
 						<span class="invalid-feedback text-danger">{{ $message }}</span>
 					@enderror

@@ -32,6 +32,15 @@ class GaleriController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = new Gallery;
     	$galeri->id_category_galeri = $request->kategori;
 
@@ -56,6 +65,15 @@ class GaleriController extends Controller
 
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = Gallery::find($id);
     	$galeri->id_category_galeri = $request->kategori;
 
