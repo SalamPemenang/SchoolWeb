@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<label for="nama">Nama Sekolah*</label>
-			<input type="text" name="nama" class="form-control" value="{{ old('nama') }}"  autocomplete="off" id="nama">
+			<input type="text" name="nama" class="form-control" value="{{ old('nama') }}" minlength="3" maxlength="50" autocomplete="off" id="nama">
 			@error('nama')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 		</div>
 		<div class="form-group">
 			<label for="npsn">NPSN*</label>
-			<input type="text" name="npsn" class="form-control" value="{{ old('npsn') }}" autocomplete="off" id="npsn">
+			<input type="text" name="npsn" class="form-control" value="{{ old('npsn') }}" minlength="4" maxlength="20" autocomplete="off" id="npsn">
 			@error('npsn')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="form-group">
 			<label for="nis">NIS*</label>
-			<input type="text" name="nis" class="form-control" value="{{ old('nis') }}"  autocomplete="off" id="nis">
+			<input type="text" name="nis" class="form-control" value="{{ old('nis') }}" minlength="4" maxlength="15" autocomplete="off" id="nis">
 			@error('nis')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
 		</div>
 		<div class="form-group">
 			<label for="kode_un">Kode Ujian Nasional</label>
-			<input type="text" name="kode_un" class="form-control" value="{{ old('kode_un') }}"  autocomplete="off" id="kode_un">
+			<input type="text" name="kode_un" class="form-control" value="{{ old('kode_un') }}" minlength="3" maxlength="5"  autocomplete="off" id="kode_un">
 			@error('kode_un')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
 		</div>
 		<div class="form-group">
 			<label for="alamat">Alamat*</label>
-			<textarea name="alamat" class="form-control" maxlength="225" autocomplete="off" id="alamat">{{ old('alamat') }}</textarea>
+			<textarea name="alamat" class="form-control" maxlength="225" autocomplete="off" minlength="10" maxlength="255" id="alamat">{{ old('alamat') }}</textarea>
 			@error('alamat')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
 		</div>
 		<div class="form-group">
 			<label for="no_hp">No Telepon*</label>
-			<input type="text" name="no_hp" class="form-control" maxlength="15" value="{{ old('no_hp') }}" autocomplete="off"  id="no_hp">
+			<input type="text" name="no_hp" class="form-control" maxlength="15" value="{{ old('no_hp') }}" minlength="8" maxlength="15" autocomplete="off"  id="no_hp">
 			@error('no_hp')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
 		</div>
 		<div class="form-group">
 			<label for="no_sk">NO SK Sekolah*</label>
-			<input type="text" name="no_sk_pendirian_sekolah" class="form-control" maxlength="50" value="{{ old('no_sk_pendirian_sekolah') }}"  autocomplete="off" id="no_sk">
+			<input type="text" name="no_sk_pendirian_sekolah" class="form-control" minlength="6" maxlength="50" value="{{ old('no_sk_pendirian_sekolah') }}"  autocomplete="off" id="no_sk">
 			@error('no_sk_pendirian_sekolah')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -96,7 +96,7 @@
 		</div>
 		<div class="form-group">
 			<label for="website">Website*</label>
-			<input type="text" name="website" class="form-control" maxlength="40"  autocomplete="off" value="{{ old('website') }}" id="website">
+			<input type="text" name="website" class="form-control" minlength="7" maxlength="40"  autocomplete="off" value="{{ old('website') }}" id="website">
 			@error('website')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -105,7 +105,7 @@
 		</div>
 		<div class="form-group">
 			<label for="email">Email*</label>
-			<input type="text" name="email" class="form-control" maxlength="40"  autocomplete="off" value="{{ old('email') }}"  id="email">
+			<input type="text" name="email" class="form-control" minlength="8" maxlength="40"  autocomplete="off" value="{{ old('email') }}"  id="email">
 			@error('email')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@
 		</div>
 		<div class="form-group">
 			<label for="facebook">Akun Facebook*</label>
-			<input type="text" name="facebook" class="form-control" maxlength="40"  autocomplete="off" value="{{ old('facebook') }}" id="facebook">
+			<input type="text" name="facebook" class="form-control" minlength="8" maxlength="40"  autocomplete="off" value="{{ old('facebook') }}" id="facebook">
 			@error('facebook')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -123,7 +123,7 @@
 		</div>
 		<div class="form-group">
 			<label for="twitter">Akun Twitter*</label>
-			<input type="text" name="twitter" class="form-control" maxlength="40"  autocomplete="off" value="{{ old('twitter') }}" id="twitter">
+			<input type="text" name="twitter" class="form-control" minlength="8" maxlength="40"  autocomplete="off" value="{{ old('twitter') }}" id="twitter">
 			@error('twitter')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -132,7 +132,7 @@
 		</div>
 		<div class="form-group">
 			<label for="instagram">Akun Instagram*</label>
-			<input type="text" name="instagram" class="form-control" maxlength="40"  autocomplete="off" value="{{ old('instagram') }}" id="instagram">
+			<input type="text" name="instagram" class="form-control" minlength="8" maxlength="40"  autocomplete="off" value="{{ old('instagram') }}" id="instagram">
 			@error('instagram')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
@@ -141,7 +141,7 @@
 		</div>
 		<div class="form-group">
 			<label for="maps">URL Peta Lokasi*</label>
-			<input type="text" name="maps" class="form-control"  autocomplete="off" value="{{ old('maps') }}" id="maps">
+			<input type="text" name="maps" class="form-control" minlength="10" maxlength="440" autocomplete="off" value="{{ old('maps') }}" id="maps">
 			@error('maps')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
