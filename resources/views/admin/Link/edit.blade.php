@@ -16,15 +16,24 @@ Halaman Link
 
 				<div class="form-group">
 					<input type="text" name="nama" class="form-control" value="{{ $link->nama }}">
+					@error('nama')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
 					<input type="text" name="link" class="form-control" maxlength="190" value="{{ $link->link }}">
+					@error('link')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
 					<span>Pilih Gambar Bila Ingin Diganti</span>
 					<input type="file" name="foto" class="form-control" value="{{ $link->foto }}">
+					@error('foto')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">

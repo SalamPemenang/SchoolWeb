@@ -15,4 +15,10 @@ class Gallery extends Model
     	'video',
     	'id_category_galeri',
     ];
+
+
+    public function categoryGallery()
+    {
+    	return $this->belongsTo(CategoryGallery::class);
+    }
 }
