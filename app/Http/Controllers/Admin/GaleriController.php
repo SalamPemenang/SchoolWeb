@@ -26,12 +26,22 @@ class GaleriController extends Controller
 
     public function create()
     {
-    	return view('admin.galeri.add');
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.add', compact('categories'));
     }
 
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = new Gallery;
     	$galeri->id_category_galeri = $request->kategori;
 
@@ -50,12 +60,22 @@ class GaleriController extends Controller
     public function edit($id)
     {
     	$galeri = Gallery::find($id);
-    	return view('admin.galeri.edit', compact('galeri'));
+        $categories = CategoryGaleri::all();
+    	return view('admin.galeri.edit', compact('galeri', 'categories'));
     }
 
 
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$galeri = Gallery::find($id);
     	$galeri->id_category_galeri = $request->kategori;
 
