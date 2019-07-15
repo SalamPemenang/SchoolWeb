@@ -26,12 +26,22 @@ class FasilitasController extends Controller
 
     public function create()
     {
-    	return view('admin.fasilitas.add');
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.add', compact('categories'));
     }
 
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$fasilitas = new Fasilitas;
     	$fasilitas->id_category_fasilitas = $request->kategori;
 
@@ -50,12 +60,23 @@ class FasilitasController extends Controller
     public function edit($id)
     {
     	$fasilitas = Fasilitas::find($id);
-    	return view('admin.fasilitas.edit', compact('fasilitas'));
+        $categories = CategoryFasilitas::all();
+    	return view('admin.fasilitas.edit', compact('fasilitas', 'categories'));
     }
 
 
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto maksimal 1mb.'
+        ];
+
+        $this->validate($request, [
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
+        
     	$fasilitas = Fasilitas::find($id);
     	$fasilitas->id_category_fasilitas = $request->kategori;
 

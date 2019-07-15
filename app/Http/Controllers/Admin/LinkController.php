@@ -35,9 +35,20 @@ class LinkController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Form ini harus diisi.',
+            'url' => 'Silahkan Masukan Alamat URL yang benar.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+        $this->validate($request, [
+            'nama' => 'required',
+            'link' => 'required|url',
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
 
-        dd($request->foto);
-        die();
+        // dd($request->foto);
+        // die();
     	$link = new Link;
         $link->nama = $request->nama;
     	$link->link = $request->link;
@@ -61,6 +72,17 @@ class LinkController extends Controller
 
     public function update(Request $request, $id)
     {
+         $message = [
+            'required' => 'Form ini harus diisi.',
+            'url' => 'Silahkan Masukan Alamat URL yang benar.',
+            'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
+            'max' => 'Ukuran Foto Maksimal 1mb.'
+        ];
+        $this->validate($request, [
+            'nama' => 'required',
+            'link' => 'required|url',
+            'foto' => 'required|mimes:jpeg,jpg,png|max:1000'
+        ], $message);
     	$link = Link::find($id);
     	$link->nama = $request->nama;
         $link->link = $request->link;
