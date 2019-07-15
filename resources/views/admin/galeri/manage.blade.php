@@ -5,17 +5,19 @@ Kelola Galeri
 @stop
 
 @section('content')
-	<a href="{{ route('galeri') }}" class="btn btn-sm btn-primary">Kembali</a>
+	<a href="{{ route('galeri.add') }}" class="btn btn-sm btn-primary">Tambah Data</a>
+	<a href="{{ route('GK') }}" class="btn btn-sm btn-success">Tambah Kategori</a>
 	<br><br>
 	
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2">
+		<div class="col-sm-10 col-sm-offset-1">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th class="text-center">NO</th>
 						<th class="text-center">FOTO</th>
 						<th class="text-center">KATEGORI</th>
+						<th class="text-center">LINK VIDEO</th>
 						<th class="text-center">ACTION</th>
 					</tr>
 				</thead>
@@ -25,7 +27,8 @@ Kelola Galeri
 					<tr>
 						<td>{{ $no + 1 }}.</td>
 						<td>{{ $galeri->foto }}</td>
-						<td>{{ $galeri->kategori }}</td>
+						<td class="text-center">{{ $galeri->id_category_galeri }}</td>
+						<td>{{ $galeri->video }}</td>
 						<td class="text-center">
 							<form action="{{ route('galeri.delete', $galeri->id) }}" method="post">
 								@csrf
@@ -40,4 +43,5 @@ Kelola Galeri
 			</table>	
 		</div>
 	</div>
+	<a href="{{ route('galeri') }}" class="btn btn-sm btn-danger">Kembali</a>
 @stop

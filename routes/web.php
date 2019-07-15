@@ -141,7 +141,18 @@ Route::prefix('fasilitas')->group( function() {{
 	Route::get('/edit/{id}', 'Admin\FasilitasController@edit')->name('fasilitas.edit');
 	Route::post('/post/{id}', 'Admin\FasilitasController@update')->name('fasilitas.update');
 	// Hapus Data
-	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete');
+	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete')->middleware('verified');
+
+	// Route KategoriFasilitas
+	Route::get('/kategori', 'Admin\CategoryFasilitasController@index')->name('GF')->middleware('verified');
+	// Tambah Data
+	Route::get('/kategori/tambah', 'Admin\CategoryFasilitasController@create')->name('GF.add')->middleware('verified');
+	Route::post('/kategori/post', 'Admin\CategoryFasilitasController@store')->name('GF.store')->middleware('verified');
+	// Ubah Data
+	Route::get('/kategori/edit/{id}', 'Admin\CategoryFasilitasController@edit')->name('GF.edit')->middleware('verified');
+	Route::post('/kategori/post/{id}', 'Admin\CategoryFasilitasController@update')->name('GF.update')->middleware('verified');
+	// Hapus Data
+	Route::delete('kategori/delete/{id}', 'Admin\CategoryFasilitasController@destroy')->name('GF.delete')->middleware('verified');
 }});
 
 
@@ -158,7 +169,7 @@ Route::prefix('galeri')->group( function() {{
 	Route::get('/edit/{id}', 'Admin\GaleriController@edit')->name('galeri.edit');
 	Route::post('/post/{id}', 'Admin\GaleriController@update')->name('galeri.update');
 	// Hapus Data
-	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete');
+	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete')->middleware('verified');
 }});
 
 
