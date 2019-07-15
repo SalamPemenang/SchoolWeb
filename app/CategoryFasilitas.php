@@ -13,4 +13,10 @@ class CategoryFasilitas extends Model
     protected $fillable = [
     	'nama',
     ];
+
+
+    public function fasilitas()
+    {
+    	return $this->hasMany(Gallery::class);
+    }
 }

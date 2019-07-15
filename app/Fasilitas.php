@@ -14,4 +14,9 @@ class Fasilitas extends Model
     	'foto',
     	'id_category_fasilitas',
     ];
+
+    public function categoryFasilitas()
+    {
+    	return $this->belongsTo(CategoryFasilitas::class);
+    }
 }
