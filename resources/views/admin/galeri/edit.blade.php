@@ -1,7 +1,7 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Galeri
+Edit Galeri
 @stop
 
 @section('content')
@@ -15,14 +15,18 @@ Halaman Galeri
 
 				<div class="form-group">
 					<label for="up">Upload Gambar :</label>
-					<input type="file" name="foto" class="form-control" id="up" required="">
+					<input type="file" name="foto" class="form-control" id="up">
+					@error('foto')
+						<span class="invalid-feedback text-danger">{{ $message }}</span>
+					@enderror
 				</div>
 
 				<div class="form-group">
 					<select name="kategori" class="form-control">
-						<option value="">{{ $galeri->kategori }}</option>
-						<option value="">Kantin</option>
-						<option value="">Perpustakaan</option>
+						<option value="{{ $galeri->id_category_galeri }}">{{ $galeri->id_category_galeri }}</option>
+						@foreach( $categories as $category )
+							<option value="{{ $category->id }}">{{ $category->nama }}</option>
+						@endforeach
 					</select>
 				</div>
 

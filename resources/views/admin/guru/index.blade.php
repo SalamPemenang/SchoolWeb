@@ -26,7 +26,7 @@ Guru
 <script>
 	$(function(){
 		$('#guru').DataTable({
-		order: [[0, 'desc']],
+		order: [[0, 'asc']],
     processing: true,
     responsive: true,
     serverSide: true,

@@ -1,11 +1,12 @@
 @extends('layouts.admin-app')
 
 @section('title')
-Halaman Fasilitas
+Kelola Fasilitas
 @stop
 
 @section('content')
-	<a href="{{ route('fasilitas') }}" class="btn btn-sm btn-primary">Kembali</a>
+	<a href="{{ route('fasilitas.add') }}" class="btn btn-sm btn-primary">Tambah Data</a>
+	<a href="{{ route('GF') }}" class="btn btn-sm btn-success">Tambah Kategori</a>
 	<br><br>
 	
 	<div class="row">
@@ -25,7 +26,7 @@ Halaman Fasilitas
 					<tr>
 						<td>{{ $no + 1 }}.</td>
 						<td>{{ $fasilitas->foto }}</td>
-						<td>{{ $fasilitas->kategori }}</td>
+						<td class="text-center">{{ $fasilitas->id_category_fasilitas }}</td>
 						<td class="text-center">
 							<form action="{{ route('fasilitas.delete', $fasilitas->id) }}" method="post">
 								@csrf
@@ -40,4 +41,5 @@ Halaman Fasilitas
 			</table>	
 		</div>
 	</div>
+	<a href="{{ route('fasilitas') }}" class="btn btn-sm btn-danger">Kembali</a>
 @stop
