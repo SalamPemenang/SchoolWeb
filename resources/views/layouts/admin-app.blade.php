@@ -311,10 +311,9 @@
 
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
-    <b>Version</b> 2.4.12
+    <b>Version</b> 1.0.0
   </div>
-  <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-  reserved.
+  <script>document.write(new Date().getFullYear());</script> | Template & Powered By <strong>RPL SMAKNIS IT TIM</strong>
 </footer>
 
 <!-- Control Sidebar -->
