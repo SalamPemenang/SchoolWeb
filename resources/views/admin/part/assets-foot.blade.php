@@ -13,9 +13,17 @@
 <!-- Datatable -->
 <script src="{{asset('../../js/jquery.dataTables.min.js')}}"></script>
 
+<script src="{{asset('../../bower_components/ckeditor/ckeditor.js')}}"></script>
 
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
+</script>
+<script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor1')
+    })
 </script>

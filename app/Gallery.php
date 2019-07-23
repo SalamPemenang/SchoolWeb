@@ -19,6 +19,6 @@ class Gallery extends Model
 
     public function categoryGallery()
     {
-    	return $this->belongsTo(CategoryGallery::class);
+    	return $this->belongsTo(CategoryGaleri::class);
     }
 }
