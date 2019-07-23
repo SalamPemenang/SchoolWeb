@@ -6,6 +6,16 @@
 /* =================================== */
 /*  Basic Style 
 /* =================================== */
+.desk{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.judul{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 ::-moz-selection {
   /* Code for Firefox */
   background-color: #39cfca;
@@ -1989,7 +1999,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .feature-item {
   padding: 50px 40px;
-  background: #f1f9ff;
+  background: #fff;
   margin-bottom: 30px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -2020,7 +2030,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   bottom: -30px; }
 .single-faculty .meta-text {
   padding: 60px 30px 40px;
-  background: #fff; }
+  background: #fff;
+  box-shadow: 3px 3px 30px 1px; }
   @media (max-width: 1024px) {
     .single-faculty .meta-text {
       padding: 60px 20px 40px; } }
