@@ -29,12 +29,13 @@ class PengumumanController extends Controller
         $message = [
             'required' => 'Form Ini Harus Diisi.',
             'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
-            'max' => 'Ukuran Foto Maksimal 1mb.',
-            'date' => 'Format Tanggal yang anda masukan salah.'
+            'max' => 'Ukuran Foto Maksimal 500kb.',
+            'date' => 'Format Tanggal yang anda masukan salah.',
+            'min' => 'Judul Minimal 17 huruf'
         ];
         $this->validate($request, [
-            'judul' => 'required',
-            'foto' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'judul' => 'required|min:17',
+            'foto' => 'required|mimes:jpeg,jpg,png|max:500',
             'tgl' => 'required|date',
             'deskripsi' => 'required'
         ], $message);
@@ -52,7 +53,7 @@ class PengumumanController extends Controller
         
         $foto = $request->file('foto');
         $filename = time() .'.'. $foto->getClientOriginalExtension();
-        Image::make($foto)->resize(400, 400)->save( public_path('/image/pengumuman/' . $filename));
+        Image::make($foto)->resize(350, 350)->save( public_path('/image/pengumuman/' . $filename));
         $pengumuman->foto = $filename;
         
 
