@@ -14,7 +14,8 @@ class CategoryGalleryController extends Controller
     	return view('admin.galeri.kategori.index', compact('categories'));
     }
 
-     public function create()
+
+    public function create()
     {
     	return view('admin.galeri.kategori.add');
     }

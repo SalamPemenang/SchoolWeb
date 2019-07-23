@@ -14,6 +14,7 @@ class CategoryFasilitasController extends Controller
     	return view('admin.fasilitas.kategori.index', compact('categories'));
     }
 
+
      public function create()
     {
     	return view('admin.fasilitas.kategori.add');
