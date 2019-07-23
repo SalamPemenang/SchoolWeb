@@ -17,6 +17,22 @@ class FasilitasController extends Controller
     	return view('admin.fasilitas.index', compact('fasilitations', 'categories'));
     }
 
+
+    // public function show($id)
+    //  {
+    //     $categories = CategoryGaleri::all();
+    //     $galeries = null;
+    //     if($id){
+    //         $galeries = Gallery::find($id);
+    //         $categories = CategoryGaleri::with('galeries')->where('id',$id)->paginate(8);
+    //     }else{
+    //         $galeries = 'semua';
+    //         $categories = CategoryGaleri::paginate(8);
+    //     }
+    //     return view('admin.fasilitas.show');
+    //  }
+
+
     public function manage()
     {
     	$fasilitations = Fasilitas::all();
