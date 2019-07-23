@@ -1,11 +1,28 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+use App\Eskul;
+use App\Berita;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (){
+	$pengumuman = DB::table('pengumuman')
+						->orderBy('tgl', 'desc')
+						->get();
+	$b = DB::table('berita')
+						->orderBy('tgl', 'desc')
+						->get();
+	$Eskul = Eskul::all();
+    return view('welcome', ['Eskul' => $Eskul, 'pengumuman' => $pengumuman, 'b' => $b]);
 });
-
-
 Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
