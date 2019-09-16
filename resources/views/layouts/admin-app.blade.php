@@ -120,30 +120,12 @@
               <!-- User image -->
               <li class="user-header">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  {{ Auth::user()->name }}
+                  <small>Admin</small>
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
                 <div class="pull-right">
                  <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                  onclick="event.preventDefault();
@@ -214,12 +196,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li>
-              <a href="{{route('siswa')}}"><i class="fa fa-circle-o"></i>Daftar Siswa</a></li>
+            <li><a href="{{route('tahunajaran')}}"><i class="fa fa-circle-o"></i>Tahun Ajaran</a></li>
             <li>
              <a href="{{route('kelas')}}"><i class="fa fa-circle-o"></i>Kelas</a>
             </li>
-            <li><a href="{{route('tahunajaran')}}"><i class="fa fa-circle-o"></i>Tahun Ajaran</a></li>
+            <li>
+              <a href="{{route('siswa')}}"><i class="fa fa-circle-o"></i>Daftar Siswa</a></li>
             <li><a href="{{route('alumni')}}"><i class="fa fa-circle-o"></i>Daftar Alumni</a></li>
             <li>
               <a href="{{route('eskul')}}"><i class="fa fa-circle-o"></i>Eskul</a></li>
