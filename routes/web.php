@@ -20,9 +20,22 @@ Route::get('/', function (){
 	$b = DB::table('berita')
 						->orderBy('tgl', 'desc')
 						->get();
+	$Galeri = DB::table('galeri')
+						->orderBy('created_at', 'desc')
+						->get();
+	$Fasilitas = DB::table('fasilitas')
+						->orderBy('created_at', 'desc')
+						->get();
 	$Eskul = Eskul::all();
-    return view('welcome', ['Eskul' => $Eskul, 'pengumuman' => $pengumuman, 'b' => $b]);
+    return view('welcome', ['Eskul' => $Eskul,
+    						'pengumuman' => $pengumuman,
+    						'b' => $b,
+    						'Galeri' => $Galeri,
+    						'Fasilitas' => $Fasilitas
+    					]);
 });
+
+
 Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');

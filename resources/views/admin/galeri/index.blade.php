@@ -19,8 +19,8 @@ Halaman Galeri
 
 	<div class="row">
 		@foreach( $galeries as $galeri )
-		<div class="col-sm-3">
-			<img src="{{ asset('/image/galeri/'.$galeri->foto) }}" alt="galeri.jpg"> 
+		<div class="col-md-4">
+			<img width="300" src="{{ asset('/image/galeri/'.$galeri->foto) }}" alt="galeri.jpg"> 
 			<br><br>
 		</div>
 		@endforeach

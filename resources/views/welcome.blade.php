@@ -23,7 +23,7 @@
 <body>
 
   <!-- Start Header Area -->
-  <header id="header">
+  <header id="header" style="background-color: rgba(55, 183, 198, 0.5);">
     <div class="container">
       <div class="row align-items-center justify-content-between d-flex">
         <div id="logo">
@@ -77,8 +77,11 @@
           <h4 class="text-white">Top Ekstrakulikuler</h4>
           
           <div class="courses pt-20">
+            <?php $count = 0; ?>
             @foreach($Eskul as $E)
+            <?php if ($count == 7) break; ?>
             <a href="#" data-wow-duration="1s" data-wow-delay=".3s" class="primary-btn transparent mr-10 mb-10 wow fadeInDown">{{$E->nama}}</a>
+            <?php $count++; ?>
             @endforeach
           </div>
         </div>
@@ -89,47 +92,8 @@
     </div>
   </section>
   <!-- End Banner Area -->
-  <?php $count = 0; ?>
-  @foreach($pengumuman as $pengumuman)
-  <?php if ($count == 1 ) break; ?>
-  <section class="courses-area section-gap">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="section-title text-center">
-            <h1>Pengumuman</h1>
-            <hr>
-            <p><b>Pengumuman Terbaru Dan Terhangat Seputar Sekolah</b></p>
-          </div>
-        </div> 
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-5 about-right">
-          <h1 class="judul">
-            {{$pengumuman->judul}}
-          </h1>
-          <p>{{$pengumuman->tgl}}</p>
-          <div class="wow fadeIn" data-wow-duration="1s">
-            <p class="desk">
-              {{$pengumuman->deskripsi}}
-            </p>
-          </div>
-          <a href="courses.html" class="primary-btn white">Lihat</a>
-        </div>
-        <div class="offset-lg-1 col-lg-6">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <img class="img-fluid" src="image/pengumuman/{{$pengumuman->foto}}" style="width: 100%;">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <?php $count++; ?>
-  @endforeach
-  <!-- Start Pengumuman Area -->
-  <section class="feature-area section-gap-v2">
+
+  <section class="post-content-area section-gap bg-white">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -140,13 +104,85 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-8 posts-list">
+          <?php $count = 0; ?>
+          @foreach($b as $B)
+          <?php if ($count == 3) break; ?>
+          <div class="single-post row">
+            <div class="col-lg-3  col-md-3 meta-details">
+              <ul class="tags">
+                <li><a href="#">Berita</a></li>
+                <li><a href="#">Sekolah, </a></li>
+                <li><a href="#">Terhangat</a></li>
+                <li><a href="#">Terbaru</a></li>
+              </ul>
+              <div class="user-details row">
+                <p class="date col-lg-12 col-md-12 col-6"><a href="#">{{$B->tgl}}</a> <span class="lnr lnr-calendar-full"></span></p>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 ">
+              <div class="feature-img">
+                <img class="img-fluid img-shade" src="image/berita/{{$B->foto}}" style="width: 700px;height: 300px;">
+              </div>
+              <a class="posts-title"><h3>{{$B->judul}}</h3></a>
+              <p class="excert">
+                {{$B->deskripsi}}
+              </p>
+              <a href="" class="primary-btn img-shade">View More</a>
+            </div>
+          </div>
+          <?php $count++; ?>
+          @endforeach
+        </div>
+        <div class="col-lg-4 sidebar-widgets">
+          <div class="widget-wrap">
+            <div class="single-sidebar-widget popular-post-widget">
+              <h4 class="popular-title">Foto & Video Terbaru</h4>
+                <div class="popular-post-list">
+                <?php $count = 0; ?>
+                @foreach($Galeri as $G)
+                <?php if ($count == 2) break; ?>
+                <div class="single-sidebar-widget popular-post-widget">
+                    <div class="single-post-list d-flex flex-row align-items-center">
+                      <div class="thumb">
+                        <img class="img-fluid" src="image/galeri/{{$G->foto}}" style="width: 100%">
+                      </div>
+                    </div>
+                      <div class="details">
+                        <a href=""><h6>Dari Galeri</h6></a>
+                        <p>{{$G->created_at}}</p>
+                      </div>
+                  </div>
+                </div>
+                <?php $count++; ?>
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-area section-gap-v2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="section-title text-center">
+            <h1>Pengumuman</h1>
+            <hr>
+            <p><b>Pengumuman Terbaru Dan Terhangat Seputar Sekolah</b></p>
+          </div>
+        </div>
+      </div>
       <div class="row justify-content-center d-flex align-items-center">
         <?php $count2 = 0; ?>
-        @foreach($b as $p)
+        @foreach($pengumuman as $p)
         <?php if ($count2 == 4) break; ?>
         <div class="col-lg-3 col-md-6 col-sm-12 single-faculty">
           <div class="thumb d-flex justify-content-center">
-            <img class="img-fluid" src="image/berita/{{$p->foto}}" width="220" alt="">
+            <img class="img-fluid" src="image/Pengumuman/{{$p->foto}}" width="220" alt="">
           </div>
           <div class="meta-text text-center">
             <h4 class="judul">{{$p->judul}}</h4>
@@ -174,7 +210,6 @@
       </div>
     </div>
   </section>
-  <!-- End Pengumuman Area -->
 
   <!-- Start Footer Area -->
   <footer class="footer-area section-gap">
@@ -213,6 +248,7 @@
         </div>
       </div>
     </footer>
+
     <!-- End Footer Area -->
 
     <!-- ####################### Start Scroll to Top Area ####################### -->
