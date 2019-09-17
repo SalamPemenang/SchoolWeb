@@ -51,8 +51,6 @@ class ProfileSekolahController extends Controller
 
         $messages = [
             'required' => 'Form Ini Harus Diisi.',
-            'min' => 'Form ini harus diisi minimal 4 karakter.',
-            'max' => 'form ini harus diisi maksimal 200 karakter',
             'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
             'numeric' => 'Form ini Harus diisi oleh angka.',
             'alpha' => 'Form ini harus diisi oleh teks.',
@@ -68,6 +66,7 @@ class ProfileSekolahController extends Controller
             'kode_un' => 'required|numeric',
             'alamat' => 'required|min:5|max:60',
             'no_hp' => 'required|min:5|max:20',
+            'faximile' => 'required|min:10|max:20',
             'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
             'tgl_pendirian' => 'required',
             'website' => 'required|min:5|max:40|url',
@@ -91,6 +90,7 @@ class ProfileSekolahController extends Controller
         $profilesekolah->kode_un = $request->kode_un;
         $profilesekolah->alamat = $request->alamat;
         $profilesekolah->no_hp = $request->no_hp;
+        $profilesekolah->faximile = $request->faximile;
         $profilesekolah->no_sk_pendirian_sekolah = $request->no_sk_pendirian_sekolah;
         $profilesekolah->tgl_pendirian = $request->tgl_pendirian;
         $profilesekolah->website = $request->website;
@@ -140,8 +140,6 @@ class ProfileSekolahController extends Controller
 
         $messages = [
             'required' => 'Form Ini Harus Diisi.',
-            'min' => 'Form ini harus diisi minimal 4 karakter.',
-            'max' => 'form ini harus diisi maksimal 200 karakter',
             'mimes' => 'Format Gambar Harus .jpg, .jpeg atau .png.',
             'numeric' => 'Form ini Harus diisi oleh angka.',
             'alpha' => 'Form ini harus diisi oleh teks.',
@@ -149,13 +147,14 @@ class ProfileSekolahController extends Controller
         ];
 
         $this->validate($request, [
-            'logo' => 'required|mimes:jpeg,jpg,png|max:2000',
+            'logo' => 'mimes:jpeg,jpg,png|max:2000',
             'nama' => 'required|min:7|max:40',
             'npsn' => 'required|numeric',
             'nis' => 'required|numeric',
             'kode_un' => 'required|numeric',
             'alamat' => 'required|min:5|max:60',
             'no_hp' => 'required|min:5|max:20',
+            'faximile' => 'required|min:10|max:20',
             'no_sk_pendirian_sekolah' => 'required|min:4|max:20',
             'tgl_pendirian' => 'required',
             'website' => 'required|min:5|max:40',
@@ -179,6 +178,7 @@ class ProfileSekolahController extends Controller
         $profilesekolah->kode_un = $request->kode_un;
         $profilesekolah->alamat = $request->alamat;
         $profilesekolah->no_hp = $request->no_hp;
+        $profilesekolah->faximile = $request->faximile;
         $profilesekolah->no_sk_pendirian_sekolah = $request->no_sk_pendirian_sekolah;
         $profilesekolah->tgl_pendirian = $request->tgl_pendirian;
         $profilesekolah->website = $request->website;
