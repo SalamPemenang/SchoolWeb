@@ -10,13 +10,21 @@ class ProfileSekolah extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'nama',
+    	'logo',
+        'nama',
     	'npsn',
-    	'kode_un',
     	'nis',
-    	'website',
-    	'email',
+    	'kode_un',
+        'alamat',
+        'no_hp',
+        'faximile',
     	'no_sk_pendirian_sekolah',
     	'tgl_pendirian',
+    	'website',
+    	'email',
+        'facebook',
+        'twitter',
+        'instagram',
+        'maps',
     ];
 }
