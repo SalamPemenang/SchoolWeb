@@ -20,13 +20,20 @@ Route::get('/', function (){
 	$b = DB::table('berita')
 						->orderBy('tgl', 'desc')
 						->get();
+	$Galeri = DB::table('galeri')
+						->orderBy('created_at', 'desc')
+						->get();
+	$Fasilitas = DB::table('fasilitas')
+						->orderBy('created_at', 'desc')
+						->get();
 	$Eskul = Eskul::all();
-    return view('welcome', ['Eskul' => $Eskul, 'pengumuman' => $pengumuman, 'b' => $b]);
+    return view('welcome', ['Eskul' => $Eskul,
+    						'pengumuman' => $pengumuman,
+    						'b' => $b,
+    						'Galeri' => $Galeri,
+    						'Fasilitas' => $Fasilitas
+    					]);
 });
-
-
-
-
 
 
 Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
@@ -73,10 +80,15 @@ Route::prefix('kelas')->group(function(){
 // Halaman Admin: Siswa
 Route::prefix('siswa')->group(function(){
 	Route::get('/', 'Admin\SiswaController@index')->name('siswa');
+	// DataTable Siswa
 	Route::get('/data', 'Admin\SiswaController@siswaDatatables')->name('siswa.data');
+	// Tambah Siswa
 	Route::get('/tambah', 'Admin\SiswaController@create')->name('siswa.tambah');
+	// Post Tambah & Ubah Siswa
 	Route::post('/post', 'Admin\SiswaController@store')->name('siswa.post');
+	// Ubah Siswa
 	Route::get('/{id}/edit', 'Admin\SiswaController@edit')->name('siswa.edit');
+	// Hapus Siswa
 	Route::delete('/{id}/hapus', 'Admin\SiswaController@destroy')->name('siswa.delete');
 });
 
@@ -147,6 +159,7 @@ Route::prefix('link')->group( function() {{
 // Halaman Admin : Fasilitas
 Route::prefix('fasilitas')->group( function() {{
 	Route::get('/', 'Admin\FasilitasController@index')->name('fasilitas');
+	// Route::get('/{id}', 'Admin\FasilitasController@show')->name('fasilitas.show')->middleware('verified');
 	// Manage Data
 	Route::get('/manage', 'Admin\FasilitasController@manage')->name('fasilitas.manage');
 	// Tambah Data
@@ -156,18 +169,18 @@ Route::prefix('fasilitas')->group( function() {{
 	Route::get('/edit/{id}', 'Admin\FasilitasController@edit')->name('fasilitas.edit');
 	Route::post('/post/{id}', 'Admin\FasilitasController@update')->name('fasilitas.update');
 	// Hapus Data
-	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete')->middleware('verified');
+	Route::delete('delete/{id}', 'Admin\FasilitasController@destroy')->name('fasilitas.delete');
 
 	// Route KategoriFasilitas
-	Route::get('/kategori', 'Admin\CategoryFasilitasController@index')->name('GF')->middleware('verified');
+	Route::get('/kategori', 'Admin\CategoryFasilitasController@index')->name('GF');
 	// Tambah Data
-	Route::get('/kategori/tambah', 'Admin\CategoryFasilitasController@create')->name('GF.add')->middleware('verified');
-	Route::post('/kategori/post', 'Admin\CategoryFasilitasController@store')->name('GF.store')->middleware('verified');
+	Route::get('/kategori/tambah', 'Admin\CategoryFasilitasController@create')->name('GF.add');
+	Route::post('/kategori/post', 'Admin\CategoryFasilitasController@store')->name('GF.store');
 	// Ubah Data
-	Route::get('/kategori/edit/{id}', 'Admin\CategoryFasilitasController@edit')->name('GF.edit')->middleware('verified');
-	Route::post('/kategori/post/{id}', 'Admin\CategoryFasilitasController@update')->name('GF.update')->middleware('verified');
+	Route::get('/kategori/edit/{id}', 'Admin\CategoryFasilitasController@edit')->name('GF.edit');
+	Route::post('/kategori/post/{id}', 'Admin\CategoryFasilitasController@update')->name('GF.update');
 	// Hapus Data
-	Route::delete('kategori/delete/{id}', 'Admin\CategoryFasilitasController@destroy')->name('GF.delete')->middleware('verified');
+	Route::delete('kategori/delete/{id}', 'Admin\CategoryFasilitasController@destroy')->name('GF.delete');
 }});
 
 
@@ -175,6 +188,7 @@ Route::prefix('fasilitas')->group( function() {{
 // Halaman Admin : Galleri
 Route::prefix('galeri')->group( function() {{
 	Route::get('/', 'Admin\GaleriController@index')->name('galeri');
+	// Route::get('/{id}', 'Admin\GaleriController@show')->name('galeri.show')->middleware('verified');
 	// Manage Data
 	Route::get('/manage', 'Admin\GaleriController@manage')->name('galeri.manage');
 	// Tambah Data
@@ -184,7 +198,18 @@ Route::prefix('galeri')->group( function() {{
 	Route::get('/edit/{id}', 'Admin\GaleriController@edit')->name('galeri.edit');
 	Route::post('/post/{id}', 'Admin\GaleriController@update')->name('galeri.update');
 	// Hapus Data
-	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete')->middleware('verified');
+	Route::delete('delete/{id}', 'Admin\GaleriController@destroy')->name('galeri.delete');
+
+	// Route KategoriGaleri
+	Route::get('/kategori', 'Admin\CategoryGalleryController@index')->name('GK');
+	// Tambah Data
+	Route::get('/kategori/tambah', 'Admin\CategoryGalleryController@create')->name('GK.add');
+	Route::post('/kategori/post', 'Admin\CategoryGalleryController@store')->name('GK.store');
+	// Ubah Data
+	Route::get('/kategori/edit/{id}', 'Admin\CategoryGalleryController@edit')->name('GK.edit');
+	Route::post('/kategori/post/{id}', 'Admin\CategoryGalleryController@update')->name('GK.update');
+	// Hapus Data
+	Route::delete('kategori/delete/{id}', 'Admin\CategoryGalleryController@destroy')->name('GK.delete');
 }});
 
 
@@ -256,7 +281,7 @@ Route::prefix('struktur-organisasi')->group( function() {
 
 // Halaman Admin: pengumuman
 Route::prefix('pengumuman')->group(function(){
-	Route::get('/', 'Admin\pengumumanController@index')->name('pengumuman');
+	Route::get('/', 'Admin\pengumumanController@index')->name('pengumuman')->middleware('verified');
 	Route::get('/data', 'Admin\pengumumanController@pengumumanDatatables')->name('pengumuman.data');
 	Route::get('/tambah', 'Admin\pengumumanController@create')->name('pengumuman.tambah');
 	Route::post('/post', 'Admin\pengumumanController@store')->name('pengumuman.post');

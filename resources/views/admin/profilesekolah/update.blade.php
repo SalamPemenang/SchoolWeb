@@ -65,6 +65,15 @@
 			@enderror
 		</div>
 		<div class="form-group">
+			<label for="faximile">Faximile*</label>
+			<input type="text" name="faximile" class="form-control" maxlength="20" value="{{ $profilesekolah->faximile }}" minlength="10" autocomplete="off" id="faximile">
+			@error('faximile')
+				<span class="invalid-feedback text-danger">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+		</div>
+		<div class="form-group">
 			<label for="no_sk">NO SK Sekolah*</label>
 			<input type="text" name="no_sk_pendirian_sekolah" class="form-control" value="{{ $profilesekolah->no_sk_pendirian_sekolah }}" minlength="6" maxlength="50" id="no_sk">
 			@error('no_sk_pendirian_sekolah')

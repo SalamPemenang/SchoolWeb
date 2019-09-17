@@ -19,8 +19,8 @@ Halaman Fasilitas
 
 	<div class="row">
 		@foreach( $fasilitations as $fasilitas )
-		<div class="col-sm-3">
-			<img src="{{ asset('/image/fasilitas/'.$fasilitas->foto) }}" alt="fasilitas.jpg"> 
+		<div class="col-sm-4">
+			<img width="300" src="{{ asset('/image/fasilitas/'.$fasilitas->foto) }}" alt="fasilitas.jpg"> 
 			<br><br>
 		</div>
 		@endforeach
