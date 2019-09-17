@@ -69,11 +69,20 @@
 		</div>
 		<div class="form-group">
 			<label for="no_hp">No Telepon*</label>
-			<input type="text" name="no_hp" class="form-control" maxlength="15" value="{{ old('no_hp') }}" minlength="8" maxlength="15" autocomplete="off"  id="no_hp">
+			<input type="text" name="no_hp" class="form-control" maxlength="15" value="{{ old('no_hp') }}" minlength="8" autocomplete="off"  id="no_hp">
 			@error('no_hp')
 				<span class="invalid-feedback text-danger">
 					 <strong>{{ $message }}</strong>
 				 </span>
+			@enderror
+		</div>
+		<div class="form-group">
+			<label for="faximile">Faximile*</label>
+			<input type="text" name="faximile" class="form-control" maxlength="20" value="{{ old('faximile') }}" minlength="10" autocomplete="off" id="faximile">
+			@error('faximile')
+				<span class="invalid-feedback text-danger">
+					<strong>{{ $message }}</strong>
+				</span>
 			@enderror
 		</div>
 		<div class="form-group">
