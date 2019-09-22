@@ -52,12 +52,7 @@ Tambah Pengumuman
               </div>
               <!-- /. tools -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
-                    <textarea id="editor1" name="deskripsi" rows="10" cols="80">
-                    	{{ old('deskripsi') }}
-                    </textarea>
-            </div>
+            <textarea name="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
           </div>
       </div>
       <!-- ./row -->
