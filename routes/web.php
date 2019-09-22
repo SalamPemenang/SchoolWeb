@@ -12,6 +12,8 @@
 */
 use App\Eskul;
 use App\Berita;
+use App\ProfileSekolah;
+use App\Pengumuman;
 
 Route::get('/', function (){
 	$pengumuman = DB::table('pengumuman')
@@ -27,7 +29,9 @@ Route::get('/', function (){
 						->orderBy('created_at', 'desc')
 						->get();
 	$Eskul = Eskul::all();
-    return view('welcome', ['Eskul' => $Eskul,
+	$Profile_Sekolah = ProfileSekolah::all();
+    return view('welcome', ['Profile_Sekolah' => $Profile_Sekolah,
+    						'Eskul' => $Eskul,
     						'pengumuman' => $pengumuman,
     						'b' => $b,
     						'Galeri' => $Galeri,
@@ -35,6 +39,14 @@ Route::get('/', function (){
     					]);
 });
 
+Route::get('/pengumuman-wel', function () {
+	$Profile_Sekolah = ProfileSekolah::all();
+	$Pengumuman = DB::table('pengumuman')->paginate(3);
+	return view('pengumuman', [
+								'Pengumuman' => $Pengumuman,
+								'Profile_Sekolah' => $Profile_Sekolah
+	]);
+})->name('pengumuman-wel');
 
 Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
 Route::post('captcha', 'CaptchaController@captchaValidate');
