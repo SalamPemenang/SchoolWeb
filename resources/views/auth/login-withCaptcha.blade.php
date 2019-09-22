@@ -1,15 +1,15 @@
 <html lang="en">
 <head>
-    <title>Captcha Code in Laravel</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">   
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous">
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @include('admin.part.assets-head')
+
 </head>
 <body>
+  <br><br><br><br>
 <div class="container">
-      <h2>Captcha Code in Laravel</h2><br/>
       @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
@@ -17,8 +17,10 @@
                   <li>{{ $error }}</li>
               @endforeach
           </ul>
-      </div><br />
+      </div><br/>
       @endif
+      <h2 class="text-center">Silahkan <strong>Login</strong></h2>
+      <br><br>
       <form method="post" action="{{url('captcha')}}">
         @csrf
         <div class="row">
@@ -40,7 +42,7 @@
           <div class="form-group col-md-4">
              <div class="captcha">
                <span>{!! captcha_img() !!}</span>
-            <a href=""><button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button></a>
+            <a href=""><button type="button" class="btn btn-info"><i class="fa fa-refresh" id="refresh"></i></button></a>
                </div>
             </div>
         </div>
@@ -52,10 +54,12 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-info">Submit</button>
           </div>
         </div>
       </form>
     </div>
+
+    @include('admin.part.assets-foot')
 </body>
 </html>

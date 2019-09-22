@@ -41,6 +41,10 @@
 			<input type="text" name="no_hp" class="form-control" value="{{ $profilesekolah->no_hp }}" id="no_hp" disabled>
 		</div>
 		<div class="form-group">
+			<label for="faximile">Faximile*</label>
+			<input type="text" name="faximile" class="form-control" maxlength="20" value="{{ $profilesekolah->faximile }}" disabled id="faximile">
+		</div>
+		<div class="form-group">
 			<label for="no_sk">NO SK Sekolah*</label>
 			<input type="text" name="no_sk_pendirian_sekolah" class="form-control" value="{{ $profilesekolah->no_sk_pendirian_sekolah }}" id="no_sk" disabled>
 		</div>
@@ -78,4 +82,3 @@
 		</div>
 	</form>
 @stop
-

@@ -17,6 +17,21 @@ class GaleriController extends Controller
     	return view('admin.galeri.index', compact('galeries', 'categories'));
     }
 
+
+     // public function show($id)
+     // {
+     //    $categories = CategoryGaleri::all();
+     //    $galeries = null;
+     //    if($id){
+     //        $galeries = Gallery::find($id);
+     //        $categories = CategoryGaleri::with('galeries')->where('id',$id)->paginate(8);
+     //    }else{
+     //        $galeries = 'semua';
+     //        $categories = CategoryGaleri::paginate(8);
+     //    }
+     //    return view('admin.galeri.show');
+     // }
+
     public function manage()
     {
     	$galeries = Gallery::all();
