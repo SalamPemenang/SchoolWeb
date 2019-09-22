@@ -16,14 +16,14 @@
 <script src="{{asset('../../bower_components/ckeditor/ckeditor.js')}}"></script>
 
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
+	$(document).ready(function () {
+		$('.sidebar-menu').tree()
+	})
 </script>
 <script>
-  $(function () {
+	$(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace('editor1')
-    })
+})
 </script>

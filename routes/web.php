@@ -12,6 +12,8 @@
 */
 use App\Eskul;
 use App\Berita;
+use App\ProfileSekolah;
+use App\Pengumuman;
 
 Route::get('/', function (){
 	$pengumuman = DB::table('pengumuman')
@@ -20,9 +22,32 @@ Route::get('/', function (){
 	$b = DB::table('berita')
 						->orderBy('tgl', 'desc')
 						->get();
+	$Galeri = DB::table('galeri')
+						->orderBy('created_at', 'desc')
+						->get();
+	$Fasilitas = DB::table('fasilitas')
+						->orderBy('created_at', 'desc')
+						->get();
 	$Eskul = Eskul::all();
-    return view('welcome', ['Eskul' => $Eskul, 'pengumuman' => $pengumuman, 'b' => $b]);
+	$Profile_Sekolah = ProfileSekolah::all();
+    return view('welcome', ['Profile_Sekolah' => $Profile_Sekolah,
+    						'Eskul' => $Eskul,
+    						'pengumuman' => $pengumuman,
+    						'b' => $b,
+    						'Galeri' => $Galeri,
+    						'Fasilitas' => $Fasilitas
+    					]);
 });
+
+Route::get('/pengumuman-wel', function () {
+	$Profile_Sekolah = ProfileSekolah::all();
+	$Pengumuman = DB::table('pengumuman')->paginate(3);
+	return view('pengumuman', [
+								'Pengumuman' => $Pengumuman,
+								'Profile_Sekolah' => $Profile_Sekolah
+	]);
+})->name('pengumuman-wel');
+
 Route::get('/login-WithCaptcha', 'CaptchaController@create')->name('logCapt');
 Route::post('captcha', 'CaptchaController@captchaValidate');
 Route::get('refreshcaptcha', 'CaptchaController@refreshCaptcha');
