@@ -18,7 +18,7 @@ class CreatePengumumanTable extends Migration
             $table->string('judul',50)->nullable();
             $table->string('foto')->default('default.jpg');
             $table->date('tgl');
-            $table->string('deskripsi',250)->nullable();
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

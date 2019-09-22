@@ -14,7 +14,11 @@ class PengumumanController extends Controller
     {
         return view('admin.pengumuman.index');
     }
-
+    public function view($id)
+    {   
+        $pengumuman = Pengumuman::find($id);
+        return view('pengumuman-view', ['pengumuman'=> $pengumuman]);
+    }
     public function pengumumanDatatables()    
     {
         $pengumuman = Pengumuman::all();
